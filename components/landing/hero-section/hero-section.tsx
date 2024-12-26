@@ -16,19 +16,21 @@ const HeroSection: React.FC = () => {
     <section className="relative h-screen w-full overflow-hidden">
       <div className="container mx-auto flex h-full items-center justify-between px-4">
         <div className="z-10 w-1/2">
-          <div className="flex flex-col space-y-5 px-4">
+          <div className="flex flex-col space-y-20 px-4">
             <div className="text-6xl font-bold leading-tight tracking-wide text-black subpixel-antialiased">
               Reengineered for the
               <FlipWords words={words} /> <br />
               IT Ecosystem
-              <p className="mt-5 text-lg font-normal text-muted-foreground">
+              <div className="mt-8 text-lg font-normal">
                 Transform your IT operations with
                 <span className="font-bold text-dcase"> DCase</span>, an
                 innovative platform that redefines service management through
                 intelligent workflows, unified integrations, and unmatched
-                scalability. Simplify processes and deliver results faster than
-                ever.
-              </p>
+                scalability.
+                <div className="mt-8">
+                  Simplify processes and deliver results faster than ever.
+                </div>
+              </div>
             </div>
             <div>
               <button className="duration-400 transform rounded-lg bg-dcase px-6 py-2 font-bold text-white transition hover:-translate-y-1">

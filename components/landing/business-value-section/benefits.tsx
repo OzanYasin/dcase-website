@@ -25,10 +25,10 @@ const benefits = [
 export default function Benefits() {
   return (
     // TODO: remove mb-80
-    <div className="mb-80 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
-          <h1 className="text-4xl font-extrabold text-gray-900 subpixel-antialiased sm:text-5xl md:text-6xl">
+    <div className="mb-80 bg-neutral-100 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl space-y-16 pb-24 pt-16">
+        <div className="text-center">
+          <h1 className="text-3xl font-extrabold text-gray-900 subpixel-antialiased sm:text-4xl md:text-5xl">
             Drive <span className="text-dcase">Tangible</span> Results with
             DCase
           </h1>
