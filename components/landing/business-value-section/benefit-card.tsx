@@ -21,9 +21,10 @@ export function BenefitCard({
         <h3 className="mb-4 text-2xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-primary dark:text-white">
           {title}
         </h3>
-        <p className="leading-relaxed text-gray-600 dark:text-gray-300">
-          {description}
-        </p>
+        <p
+          className="leading-relaxed text-gray-600 dark:text-gray-300"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
     </div>
   );

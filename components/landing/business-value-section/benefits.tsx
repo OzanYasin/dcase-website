@@ -3,22 +3,22 @@ import { BenefitCard } from "./benefit-card";
 
 const benefits = [
   {
-    icon: DollarSign,
-    title: "Maximize ROI, Minimize Costs",
+    icon: Zap,
+    title: "Operational Excellence",
     description:
-      "Dramatically slash operational costs by up to 40% through intelligent automation. Experience unparalleled financial efficiency with our flexible pricing and modular architecture.",
+      '<br/><span class="font-bold">Streamline Processes Across Departments:</span> Unify your IT operations and business workflows in a single, intuitive platform, eliminating silos and enabling seamless collaboration between teams.<br/><br/><span class="font-bold">Standardize & Automate</span>: Implement industry best practices effortlessly while automating repetitive tasks, freeing up valuable resources for strategic initiatives.',
   },
   {
     icon: ShieldCheck,
-    title: "Eliminate Downtime, Boost Revenue",
+    title: "Reduced Downtime & Incident Cost",
     description:
-      "Proactively prevent outages with cutting-edge real-time monitoring and predictive insights. Safeguard your bottom line by significantly reducing resolution times.",
+      '<br/><span class="font-bold">Prevent Outages Before They Happen</span>: Harness real-time monitoring and predictive insights to tackle issues proactively.<br/><br/><span class="font-bold">Minimize Revenue Impact</span>: Every minute of downtime costs money. DCase drastically shortens resolution times.',
   },
   {
-    icon: Zap,
-    title: "Achieve Operational Excellence",
+    icon: DollarSign,
+    title: "Faster ROI & Lower TCO",
     description:
-      "Revolutionize your workflow by unifying IT operations and business processes in one intuitive platform. Effortlessly implement best practices and automate complex tasks.",
+      '<br/><span class="font-bold">Slash Operational Costs:</span> DCase\'s intelligent automation reduces manual tasks by up to 40%, leading to substantial cost savings.<br/><br/><span class="font-bold">Simplified Licensing</span>: Flexible pricing models and modular architecture ensure you only pay for what you truly need.',
   },
 ];
 
