@@ -16,7 +16,10 @@ export default function Navbar({ className }: { className?: string }) {
   const [active, setActive] = React.useState<string | null>(null);
   return (
     <div
-      className={cn("fixed inset-x-0 top-10 z-50 mx-auto max-w-4xl", className)}
+      className={cn(
+        "container fixed inset-x-0 top-10 z-50 mx-auto w-full",
+        className,
+      )}
     >
       <Menu setActive={setActive}>
         <Link
@@ -29,7 +32,7 @@ export default function Navbar({ className }: { className?: string }) {
             width={40}
             height={40}
           />
-          DCase
+          dcase
         </Link>
         <MenuItem setActive={setActive} active={active} item="Platform">
           <div className="flex flex-col space-y-4 text-sm">
