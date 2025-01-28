@@ -36,8 +36,10 @@ export default function Navbar({ className }: { className?: string }) {
         </Link>
         <MenuItem setActive={setActive} active={active} item="Platform">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/">Product Overview</HoveredLink>
-            <HoveredLink href="/">Platform Architecture</HoveredLink>
+            <HoveredLink href="/product">Product Overview</HoveredLink>
+            <HoveredLink href="/platform-architecture">
+              Platform Architecture
+            </HoveredLink>
             <HoveredLink href="/">Deployment Models</HoveredLink>
           </div>
         </MenuItem>
