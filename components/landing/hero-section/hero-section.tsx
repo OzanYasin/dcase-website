@@ -10,7 +10,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 // const HeroModel = dynamic(() => import("./hero-model"), { ssr: false });
 
 const HeroSection: React.FC = () => {
-  const words = ["modern", "efficient", "reliable", "streamlined", "compliant"];
+  const words = ["Modern", "Efficient", "Reliable", "Streamlined", "Compliant"];
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
           <div className="flex flex-col space-y-10 px-4">
             <div className="text-6xl font-bold leading-tight tracking-wide text-black subpixel-antialiased">
               Reengineered for the
-              <FlipWords words={words} /> <br />
+              <FlipWords className="text-dcase" words={words} /> <br />
               IT Ecosystem
               <div className="mt-8 text-lg font-extralight leading-loose text-muted-foreground">
                 Transform your IT operations with DCase, an innovative platform
@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
             width="1000"
             height="1000"
             className="aspect-video overflow-hidden rounded-xl bg-transparent object-cover object-center"
-            src="/placeholder.svg"
+            src="/lp-01.png"
           />
           {/* <Canvas
             camera={{ position: [0, 0, 500], fov: 60 }}

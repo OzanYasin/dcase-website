@@ -40,14 +40,16 @@ export default function Navbar({ className }: { className?: string }) {
             <HoveredLink href="/platform-architecture">
               Platform Architecture
             </HoveredLink>
-            <HoveredLink href="/">Deployment Models</HoveredLink>
+            <HoveredLink href="/deployment-models">
+              Deployment Models
+            </HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Solutions">
           <div className="grid gap-10 p-4 text-sm">
             <ProductItem
               title="Our Solutions"
-              href="/"
+              href="/solutions"
               src="/placeholder.svg"
               description="From Small to Large Pack"
             />
@@ -55,7 +57,7 @@ export default function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Resources">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/">ITSM Use Cases</HoveredLink>
+            <HoveredLink href="/resources">ITSM Use Cases</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Company">
