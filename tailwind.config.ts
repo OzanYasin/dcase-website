@@ -12,7 +12,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dcase: "hsl(var(--dcase))",
+        dcase: {
+          DEFAULT: "hsl(var(--dcase))",
+          foreground: "hsl(var(--dcase-foreground))",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
