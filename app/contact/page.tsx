@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 
 export default function ContactPage() {
+  return null;
   const [isHovered, setIsHovered] = useState(false);
   const [expandedFaqs, setExpandedFaqs] = useState<boolean[]>([
     false,
