@@ -65,7 +65,7 @@ export default function EcosystemSection() {
             className="group relative mb-16 aspect-[21/9] w-full overflow-hidden rounded-xl shadow-lg"
           >
             <Image
-              src="/placeholder.svg"
+              src="/lp-ecosystem.gif"
               alt="DCase Ecosystem visualization"
               layout="fill"
               objectFit="cover"
