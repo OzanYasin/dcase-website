@@ -3,37 +3,47 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Cloud, Database, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
-export default function Home() {
+export default function DeploymentModels() {
   return (
     <div className="min-h-screen text-gray-800">
-      <main className="container mx-auto space-y-24 px-4 py-40">
-        <section className="space-y-8 text-center">
-          <h1 className="text-5xl font-bold leading-tight text-gray-900 sm:text-6xl">
-            Solutions Tailored to{" "}
-            <span className="text-[hsl(160.1,84.1%,39.4%)]">Your Needs</span>
-          </h1>
-          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600">
-            Flexible ITSM Solutions for Every Business Environment
-          </p>
-          <p className="mx-auto max-w-3xl text-gray-600">
-            At DCase, we understand that every organization has unique
-            requirements. That&apos;s why we offer two deployment models that
-            cater to diverse operational preferences—whether you seek total
-            control with an on-premise setup or agility through a cloud-hosted
-            platform.
-          </p>
-          <Button className="mt-4 bg-[hsl(160.1,84.1%,39.4%)] text-white hover:bg-[hsl(160.1,84.1%,34%)]">
-            Explore Solutions
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+      <main className="container mx-auto space-y-40 px-4 py-40">
+        <section className="flex flex-col items-center justify-between space-y-8 md:flex-row md:space-x-8 md:space-y-0">
+          <div className="w-full space-y-6 text-left md:w-1/2">
+            <h1 className="text-5xl font-bold leading-tight text-gray-900 sm:text-6xl">
+              <span className="text-dcase">Solutions</span> Tailored to Your
+              Needs
+            </h1>
+            <p className="text-xl leading-relaxed text-gray-600">
+              Flexible ITSM Solutions for Every Business Environment
+            </p>
+            <p className="text-gray-600">
+              At DCase, we understand that every organization has unique
+              requirements. That&apos;s why we offer two deployment models that
+              cater to diverse operational preferences—whether you seek total
+              control with an on-premise setup or agility through a cloud-hosted
+              platform.
+            </p>
+            <Button className="mt-4 bg-[hsl(160.1,84.1%,39.4%)] text-white hover:bg-[hsl(160.1,84.1%,34%)]">
+              Explore Solutions
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+          <Image
+            src="/placeholder.svg"
+            alt="ITSM Solutions"
+            width="500"
+            height="400"
+            className="h-auto rounded-lg shadow-lg"
+          />
         </section>
 
         <section className="relative">
           <div className="absolute inset-0 -skew-y-3 transform rounded-3xl bg-[hsl(160.1,84.1%,39.4%)]"></div>
           <div className="relative grid gap-8 p-8 md:grid-cols-2 md:p-12">
             <Card className="overflow-hidden border-0 bg-white shadow-xl transition-shadow duration-300 hover:shadow-2xl">
-              <CardHeader className="bg-[hsl(160.1,84.1%,39.4%)] p-6 text-white">
+              <CardHeader className="bg-[hsl(160,85%,36%)] p-6 text-white">
                 <CardTitle className="flex items-center gap-3 text-2xl">
                   <Database className="h-8 w-8" />
                   Enterprise-Grade ITSM for On-Premise Environments
@@ -79,7 +89,7 @@ export default function Home() {
             </Card>
 
             <Card className="overflow-hidden border-0 bg-white shadow-xl transition-shadow duration-300 hover:shadow-2xl">
-              <CardHeader className="bg-[hsl(160.1,84.1%,39.4%)] p-6 text-white">
+              <CardHeader className="bg-[hsl(160,85%,36%)] p-6 text-white">
                 <CardTitle className="flex items-center gap-3 text-2xl">
                   <Cloud className="h-8 w-8" />
                   Cloud-First ITSM for Modern Businesses

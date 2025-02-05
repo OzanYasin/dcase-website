@@ -12,6 +12,13 @@ import {
 } from "@/components/ui/card";
 
 export default function PlatformArchitecture() {
+  const handleLearnMore = () => {
+    const section = document.getElementById("features");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const features = [
     {
       title: "Microservices Architecture",
@@ -33,7 +40,7 @@ export default function PlatformArchitecture() {
         "Reliable Messaging",
         "Enhanced Resilience",
       ],
-      icon: "/placeholder.svga",
+      icon: "/placeholder.svg",
     },
     {
       title: "Highly Scalable Container-Based Deployment",
@@ -118,6 +125,7 @@ export default function PlatformArchitecture() {
               size="lg"
               variant="outline"
               className="border-dcase text-dcase hover:bg-dcase/10"
+              onClick={handleLearnMore}
             >
               Learn More
             </Button>
@@ -125,7 +133,10 @@ export default function PlatformArchitecture() {
         </section>
       </main>
 
-      <section className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+      <section
+        id="features"
+        className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2"
+      >
         {features.map((feature, index) => (
           <Card
             key={index}

@@ -38,7 +38,7 @@ export default function EcosystemSection() {
         >
           <motion.h1
             variants={itemVariants}
-            className="mb-8 text-center text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-6xl"
+            className="mb-8 text-center text-3xl font-extrabold leading-tight text-gray-900 md:text-4xl lg:text-5xl"
           >
             <span className="text-dcase">DCase Ecosystem:</span>
             <br />

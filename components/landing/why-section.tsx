@@ -1,9 +1,7 @@
 "use client";
 
-import { ArrowRight, Layers, Settings, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { Layers, Settings, TrendingUp } from "lucide-react";
 
 export default function WhySection() {
   const features = [
@@ -27,23 +25,6 @@ export default function WhySection() {
     },
   ];
 
-  const buttonVariants = {
-    rest: { x: 0 },
-    hover: {
-      x: 5,
-      transition: { type: "spring", stiffness: 400, damping: 10 },
-    },
-  };
-
-  const arrowVariants = {
-    rest: { x: 0, opacity: 1 },
-    hover: {
-      x: 5,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 400, damping: 10 },
-    },
-  };
-
   return (
     <section className="mx-auto w-full bg-neutral-100 px-4 py-12 sm:px-6 sm:py-16 md:py-24">
       <div className="container mx-auto">
@@ -63,7 +44,7 @@ export default function WhySection() {
           {features.map((feature, index) => (
             <Card key={index} className="border-0 shadow-none">
               <CardContent className="p-4 sm:p-6">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100 sm:mb-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-dcase/10 text-dcase sm:mb-6">
                   {feature.icon}
                 </div>
                 <h3 className="mb-2 text-lg font-semibold sm:mb-4 sm:text-xl">
@@ -72,22 +53,6 @@ export default function WhySection() {
                 <p className="mb-4 text-sm text-muted-foreground sm:mb-6 sm:text-base">
                   {feature.description}
                 </p>
-                <motion.div initial="rest" whileHover="hover" animate="rest">
-                  <Button
-                    variant="link"
-                    className="h-auto p-0 text-sm font-semibold sm:text-base"
-                  >
-                    <motion.span variants={buttonVariants}>
-                      Learn more
-                    </motion.span>
-                    <motion.span
-                      variants={arrowVariants}
-                      className="ml-2 inline-block"
-                    >
-                      <ArrowRight className="h-4 w-4" />
-                    </motion.span>
-                  </Button>
-                </motion.div>
               </CardContent>
             </Card>
           ))}

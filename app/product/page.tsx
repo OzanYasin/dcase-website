@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   InfoIcon as Analytics,
   ArrowRight,
@@ -24,9 +25,9 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -42,272 +43,464 @@ const FeatureIcon = ({ icon }: { icon: string }) => {
       Integration,
     }[icon] || Workflow;
 
-  return <IconComponent className="h-8 w-8 text-emerald-500" />;
+  return <IconComponent className="h-8 w-8 text-emerald-600" />;
 };
+
+const SectionWrapper = ({
+  children,
+  className = "",
+  bgClass = "bg-white",
+  id,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  bgClass?: string;
+  id?: string;
+}) => (
+  <motion.section
+    id={id}
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className={`py-24 ${bgClass} ${className}`}
+  >
+    {children}
+  </motion.section>
+);
 
 export default function ProductOverview() {
   return (
-    <div className="container mx-auto min-h-screen via-white px-4">
-      <main className="flex h-svh flex-col items-center justify-center text-center">
-        <div>
-          <h1 className="mb-6 text-5xl font-bold leading-tight text-gray-900 md:text-7xl">
-            Revolutionizing IT Service Management{" "}
-            <br className="hidden md:inline" />
-            <span className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-              with DCase
-            </span>
-          </h1>
+    <div className="min-h-screen font-sans">
+      {/* Hero Section */}
+      <SectionWrapper className="flex min-h-screen items-center justify-center bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-between md:flex-row">
+            <motion.div
+              className="mb-8 w-full text-left md:mb-0 md:w-1/2"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="mb-6 text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
+                Revolutionizing IT Service Management{" "}
+                <br className="hidden md:inline" />
+                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  with DCase
+                </span>
+              </h1>
+              <p className="mb-8 text-lg leading-relaxed text-gray-700 md:text-xl">
+                Explore the features that make DCase the ultimate platform for
+                seamless, scalable, and smart IT operations.
+              </p>
+              <Button className="duration-400 transform rounded-lg bg-dcase px-6 py-2 font-bold text-white transition hover:-translate-y-1 hover:bg-dcase/90">
+                Request a Demo
+              </Button>
+            </motion.div>
+            <motion.div
+              className="w-full md:w-1/2"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Image
+                src="/placeholder.svg"
+                alt="DCase Platform"
+                width={600}
+                height={400}
+                className="h-auto w-full rounded-lg shadow-xl"
+              />
+            </motion.div>
+          </div>
         </div>
-        <div>
-          <p className="mx-auto mb-10 max-w-3xl text-xl text-gray-600">
-            Explore the features that make DCase the ultimate platform for
-            seamless, scalable, and smart IT operations.
-          </p>
-        </div>
-        {/* <div className="mx-auto">
-          <Image
-            alt="DCase Dashboard"
-            src="/placeholder.svg"
-            width="900"
-            height="0"
-            className="aspect-video overflow-hidden rounded-xl bg-transparent object-cover object-center"
-          />
-        </div> */}
-      </main>
+      </SectionWrapper>
 
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <h2 className="mb-12 text-center text-4xl font-semibold text-gray-900">
-          What Makes DCase Unique?
-        </h2>
-        <div className="rounded-2xl bg-white bg-opacity-60 p-8 shadow-xl backdrop-blur-lg md:p-12">
-          <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-gray-600">
-            DCase is more than just an ITSM tool—it&apos;s a comprehensive
-            platform designed to adapt to your unique business needs, delivering
-            unmatched flexibility, reliability, and efficiency. With over 25
-            years of ITSM expertise behind its design, DCase empowers businesses
-            to:
-          </p>
-          <ul className="grid gap-8 md:grid-cols-3">
+      {/* What Makes DCase Unique? Section */}
+      <SectionWrapper bgClass="bg-gray-100">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="mb-12 text-center text-4xl font-bold text-gray-900 md:text-5xl"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            What Makes <span className="text-emerald-600">DCase</span> Unique?
+          </motion.h2>
+          <motion.div
+            className="grid gap-8 md:grid-cols-3"
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2,
+                },
+              },
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {[
               "Streamline service delivery",
               "Enhance operational efficiency",
               "Drive impactful business outcomes",
             ].map((item, index) => (
-              <motion.li
+              <motion.div
                 key={index}
-                className="flex items-center rounded-xl bg-gradient-to-r from-emerald-50 to-green-50 p-6 text-gray-700 shadow-md transition-all duration-300 hover:shadow-lg"
-                whileHover={{ scale: 1.05 }}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 },
+                }}
+                className="h-full"
               >
-                <CheckCircle className="mr-4 h-8 w-8 flex-shrink-0 text-green-500" />
-                <span className="text-lg font-medium">{item}</span>
-              </motion.li>
+                <Card className="h-full bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl">
+                  <CardHeader className="text-center">
+                    <motion.div
+                      className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 p-3"
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20,
+                      }}
+                    >
+                      <CheckCircle className="h-8 w-8 text-emerald-600" />
+                    </motion.div>
+                    <CardTitle className="text-xl font-semibold text-gray-800">
+                      {item}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-center text-gray-600">
+                      {item === "Streamline service delivery"
+                        ? "Optimize your service delivery process with automated workflows and intelligent routing, reducing response times and improving customer satisfaction."
+                        : item === "Enhance operational efficiency"
+                          ? "Maximize resource utilization and minimize bottlenecks through data-driven insights and automated task management."
+                          : "Transform raw data into actionable strategies, enabling informed decision-making and measurable business growth."}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </ul>
+          </motion.div>
         </div>
-      </motion.section>
+      </SectionWrapper>
 
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        id="features"
-        className="mt-28"
-      >
-        <h2 className="mb-12 text-center text-4xl font-semibold text-gray-900">
-          Key Features
-        </h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="h-full overflow-hidden border border-emerald-100 bg-white transition-all duration-300 hover:border-emerald-300"
-            >
-              <CardHeader className="p-4">
-                <div className="mb-2 flex items-center">
-                  <FeatureIcon icon={feature.icon} />
-                  <CardTitle className="ml-3 text-xl font-semibold">
-                    {feature.title}
-                  </CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="p-4 pt-0">
-                <CardDescription className="text-gray-600">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-        id="why-choose"
-        className="mt-20"
-      >
-        <h2 className="mb-12 text-center text-4xl font-semibold text-gray-900">
-          Why Choose DCase?
-        </h2>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { title: "Scalable", icon: ScaleIcon },
-            { title: "Reliable", icon: ShieldCheckIcon },
-            { title: "Customizable", icon: SlidersHorizontalIcon },
-            { title: "Proven Expertise", icon: AwardIcon },
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="rounded-xl border-2 border-emerald-100 bg-white p-6 transition-all duration-300 hover:border-emerald-500 hover:shadow-lg"
-              whileHover={{ y: -5 }}
-            >
-              <div className="mb-4 flex items-center">
-                <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
-                  <item.icon className="h-6 w-6 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-emerald-600">
-                  {item.title}
-                </h3>
-              </div>
-              <p className="text-gray-600">
-                {getWhyChooseDescription(item.title)}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-        id="deployment"
-        className="mt-20"
-      >
-        <h2 className="mb-12 text-center text-4xl font-semibold text-gray-900">
-          Deployment Options
-        </h2>
-        <p className="mx-auto mb-12 max-w-3xl text-center text-xl text-gray-600">
-          DCase offers flexibility with both On-Premise and Cloud deployment
-          models:
-        </p>
-        <Tabs defaultValue="on-premise" className="mx-auto max-w-3xl">
-          <TabsList className="mb-8 grid h-full w-full grid-cols-2 rounded-lg p-1">
-            <TabsTrigger
-              value="on-premise"
-              className="rounded-md px-6 py-3 text-lg transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-emerald-600 data-[state=active]:shadow-md"
-            >
-              On-Premise
-            </TabsTrigger>
-            <TabsTrigger
-              value="cloud"
-              className="rounded-md px-6 py-3 text-lg transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-emerald-600 data-[state=active]:shadow-md"
-            >
-              Cloud
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="on-premise">
-            <Card className="border-2 border-emerald-200 shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center text-2xl text-emerald-600">
-                  <ServerIcon className="mr-2 h-6 w-6" />
-                  On-Premise
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-lg">
-                  Complete control over data and infrastructure. Ideal for
-                  organizations with specific security requirements or complex
-                  integrations.
-                </CardDescription>
-                <ul className="mt-4 space-y-2">
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                    Full data sovereignty
-                  </li>
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                    Customizable security measures
-                  </li>
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                    Integration with existing infrastructure
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="cloud">
-            <Card className="border-2 border-emerald-200 shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center text-2xl text-emerald-600">
-                  <CloudIcon className="mr-2 h-6 w-6" />
-                  Cloud
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-lg">
-                  Fast, cost-effective, and scalable deployment. Perfect for
-                  organizations looking for flexibility and reduced maintenance
-                  overhead.
-                </CardDescription>
-                <ul className="mt-4 space-y-2">
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                    Rapid deployment and scaling
-                  </li>
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                    Automatic updates and maintenance
-                  </li>
-                  <li className="flex items-center text-gray-700">
-                    <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                    Global accessibility and redundancy
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-        <p className="mt-8 text-center text-lg text-gray-600">
-          Learn more on our{" "}
-          <a
-            href="/deployment-models"
-            className="text-emerald-600 transition-colors hover:text-green-600"
+      {/* Key Features Section */}
+      <SectionWrapper id="features" bgClass="bg-white">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="mb-12 text-center text-4xl font-bold text-gray-900"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            Deployment Models
-          </a>{" "}
-          page.
-        </p>
-      </motion.section>
+            Key Features
+          </motion.h2>
+          <motion.div
+            className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 },
+                }}
+              >
+                <Card className="border-t-4 border-emerald-500 bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
+                  <CardHeader className="p-6">
+                    <motion.div
+                      className="mb-4 flex items-center"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                    >
+                      <div className="mr-4 rounded-full bg-emerald-100 p-2">
+                        <FeatureIcon icon={feature.icon} />
+                      </div>
+                      <CardTitle className="text-xl font-semibold text-gray-800">
+                        {feature.title}
+                      </CardTitle>
+                    </motion.div>
+                  </CardHeader>
+                  <CardContent className="p-6 pt-0">
+                    <CardDescription className="text-gray-600">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </SectionWrapper>
 
-      <Card className="mx-auto my-20 max-w-4xl overflow-hidden rounded-2xl bg-white shadow-xl">
-        <CardHeader className="bg-gradient-to-r from-emerald-500 to-green-500 p-6 text-white">
-          <CardTitle className="text-3xl font-bold">
-            Ready to Transform Your IT Operations?
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <p className="mb-8 text-xl text-gray-600">
-            Explore the power of DCase with a personalized demo tailored to your
-            organization.
-          </p>
-          <div className="flex justify-center">
-            <Button
-              size="lg"
-              className="flex items-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors duration-300 hover:bg-emerald-700"
+      {/* Why Choose DCase? Section */}
+      <SectionWrapper id="why-choose" bgClass="bg-gray-100">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="mb-12 text-center text-4xl font-bold text-gray-900"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Why Choose DCase?
+          </motion.h2>
+          <motion.div
+            className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            {[
+              { title: "Scalable", icon: ScaleIcon },
+              { title: "Reliable", icon: ShieldCheckIcon },
+              { title: "Customizable", icon: SlidersHorizontalIcon },
+              { title: "Proven Expertise", icon: AwardIcon },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 },
+                }}
+              >
+                <Card className="bg-white shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg">
+                  <CardHeader>
+                    <motion.div
+                      className="mb-4 flex items-center"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                    >
+                      <div className="mr-4 rounded-full bg-emerald-100 p-2">
+                        <item.icon className="h-6 w-6 text-emerald-600" />
+                      </div>
+                      <CardTitle className="text-xl font-semibold text-emerald-600">
+                        {item.title}
+                      </CardTitle>
+                    </motion.div>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-gray-600">
+                      {getWhyChooseDescription(item.title)}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </SectionWrapper>
+
+      {/* Deployment Options Section */}
+      <SectionWrapper id="deployment" bgClass="bg-white">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="mb-12 text-center text-4xl font-bold text-gray-900"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Deployment Options
+          </motion.h2>
+          <motion.p
+            className="mx-auto mb-12 max-w-3xl text-center text-xl text-gray-600"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            DCase offers flexibility with both On-Premise and Cloud deployment
+            models:
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Tabs defaultValue="on-premise" className="mx-auto max-w-3xl">
+              <TabsList className="mb-8 grid h-full w-full grid-cols-2 rounded-lg bg-gray-200 p-1">
+                <TabsTrigger
+                  value="on-premise"
+                  className="rounded-md px-6 py-3 text-lg font-semibold transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-emerald-600 data-[state=active]:shadow-md"
+                >
+                  On-Premise
+                </TabsTrigger>
+                <TabsTrigger
+                  value="cloud"
+                  className="rounded-md px-6 py-3 text-lg font-semibold transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-emerald-600 data-[state=active]:shadow-md"
+                >
+                  Cloud
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="on-premise">
+                <Card className="border-2 border-gray-200 bg-white shadow-lg">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-2xl text-emerald-600">
+                      <ServerIcon className="mr-2 h-6 w-6" />
+                      On-Premise
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="mb-4 text-lg">
+                      Complete control over data and infrastructure. Ideal for
+                      organizations with specific security requirements or
+                      complex integrations.
+                    </CardDescription>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-gray-700">
+                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
+                        Full data sovereignty
+                      </li>
+                      <li className="flex items-center text-gray-700">
+                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
+                        Customizable security measures
+                      </li>
+                      <li className="flex items-center text-gray-700">
+                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
+                        Integration with existing infrastructure
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="cloud">
+                <Card className="border-2 border-gray-200 bg-white shadow-lg">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-2xl text-emerald-600">
+                      <CloudIcon className="mr-2 h-6 w-6" />
+                      Cloud
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="mb-4 text-lg">
+                      Fast, cost-effective, and scalable deployment. Perfect for
+                      organizations looking for flexibility and reduced
+                      maintenance overhead.
+                    </CardDescription>
+                    <ul className="space-y-2">
+                      <li className="flex items-center text-gray-700">
+                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
+                        Rapid deployment and scaling
+                      </li>
+                      <li className="flex items-center text-gray-700">
+                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
+                        Automatic updates and maintenance
+                      </li>
+                      <li className="flex items-center text-gray-700">
+                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
+                        Global accessibility and redundancy
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </motion.div>
+          <motion.p
+            className="mt-8 text-center text-lg text-gray-600"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Learn more on our{" "}
+            <a
+              href="/deployment-models"
+              className="font-semibold text-emerald-600 underline transition-colors hover:text-emerald-700"
             >
-              Request Demo
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+              Deployment Models
+            </a>{" "}
+            page.
+          </motion.p>
+        </div>
+      </SectionWrapper>
+
+      {/* CTA Section */}
+      <SectionWrapper bgClass="bg-gray-100">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Card className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-[#0F172A] text-white">
+              <CardContent className="p-12">
+                <h2 className="mb-6 text-center text-4xl font-bold">
+                  <span className="text-emerald-400">Ready to Transform</span>{" "}
+                  Your IT Operations?
+                </h2>
+                <p className="mx-auto mb-8 max-w-2xl text-center text-lg text-gray-300">
+                  Explore the power of DCase with a personalized demo tailored
+                  to your organization.
+                </p>
+                <div className="flex justify-center gap-4">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      size="lg"
+                      className="rounded-xl bg-emerald-500 px-8 py-6 text-lg font-semibold text-white hover:bg-emerald-600"
+                    >
+                      Get Started Now
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="rounded-xl border-emerald-500 px-8 py-6 text-lg font-semibold text-emerald-500 hover:bg-white/90 hover:text-emerald-500"
+                    >
+                      Request Demo
+                    </Button>
+                  </motion.div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </SectionWrapper>
     </div>
   );
 }
@@ -360,13 +553,13 @@ const features = [
 function getWhyChooseDescription(item: string) {
   switch (item) {
     case "Scalable":
-      return "Grows with your business needs.";
+      return "Grows with your business needs, ensuring long-term value and adaptability.";
     case "Reliable":
-      return "Built for high availability and minimal downtime.";
+      return "Built for high availability and minimal downtime, keeping your operations running smoothly.";
     case "Customizable":
-      return "Tailored to your organization's unique requirements.";
+      return "Tailored to your organization's unique requirements, providing a perfect fit for your processes.";
     case "Proven Expertise":
-      return "Backed by decades of ITSM experience.";
+      return "Backed by decades of ITSM experience, ensuring you're partnering with industry leaders.";
     default:
       return "";
   }

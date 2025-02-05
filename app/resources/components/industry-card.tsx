@@ -20,7 +20,12 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
 
   return (
     <Card
-      className={`w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl ${isExpanded ? "border-2 border-[hsl(160.1,84.1%,39.4%)]" : "border-none"}`}
+      onClick={() => setIsExpanded(!isExpanded)}
+      className={`w-full cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 ${
+        isExpanded
+          ? "border-2 border-[hsl(160.1,84.1%,39.4%)]"
+          : "border-2 border-transparent"
+      } hover:border-[hsl(160.1,84.1%,39.4%)]`}
     >
       <CardContent
         className={`p-8 sm:p-10 ${isExpanded ? "p-[30px] sm:p-[38px]" : ""}`}
@@ -45,7 +50,7 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
           </div>
           <Button
             variant="outline"
-            onClick={() => setIsExpanded(!isExpanded)}
+            // Removed onClick to avoid double toggle since the Card handles the toggling.
             className="self-end rounded-full border-2 border-gray-200 p-3 text-gray-500 transition-colors duration-200 hover:border-primary hover:bg-primary/10 hover:text-primary sm:self-auto"
             aria-expanded={isExpanded}
             aria-controls={`industry-details-${industry.name}`}
@@ -87,8 +92,8 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                         className="flex items-start space-x-4"
                       >
-                        <span className="mt-1 flex-shrink-0 rounded-full bg-primary/10 p-2 text-primary">
-                          <Check className="h-5 w-5" />
+                        <span className="mt-1 flex-shrink-0 rounded-full bg-dcase/10 p-2 text-primary">
+                          <Check className="h-5 w-5 text-emerald-700" />
                         </span>
                         <span className="text-lg leading-relaxed text-gray-700 sm:text-xl">
                           {item}
