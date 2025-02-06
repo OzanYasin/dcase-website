@@ -1,25 +1,81 @@
 "use client";
 
-import {
-  Phone,
-  MapPin,
-  Globe,
-  ArrowRight,
-  Mail,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Phone, MapPin, Globe, ArrowRight, Mail } from "lucide-react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const formSchema = z.object({
+  firstName: z.string().min(2, {
+    message: "First name must be at least 2 characters.",
+  }),
+  lastName: z.string().min(2, {
+    message: "Last name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  company: z.string().min(1, {
+    message: "Company name is required.",
+  }),
+  jobTitle: z.string().min(1, {
+    message: "Job title is required.",
+  }),
+  phone: z.string().min(1, {
+    message: "Phone number is required.",
+  }),
+  inquiry: z.string().min(1, {
+    message: "Please select an inquiry type.",
+  }),
+  comments: z.string().optional(),
+});
 
 export default function ContactPage() {
-  return null;
   const [isHovered, setIsHovered] = useState(false);
-  const [expandedFaqs, setExpandedFaqs] = useState<boolean[]>([
-    false,
-    false,
-    false,
-    false,
-  ]);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      company: "",
+      jobTitle: "",
+      phone: "",
+      inquiry: "",
+      comments: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+    // Handle form submission here
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 px-4 py-32 sm:px-6 lg:px-8">
@@ -95,140 +151,153 @@ export default function ContactPage() {
                   as possible.
                 </p>
               </div>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="mb-1 block text-sm font-medium text-gray-700"
-                    >
-                      First Name*
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="mb-1 block text-sm font-medium text-gray-700"
-                    >
-                      Last Name*
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                  >
-                    Business Email*
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="company"
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                  >
-                    Company*
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="jobTitle"
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                  >
-                    Job Title*
-                  </label>
-                  <input
-                    type="text"
-                    id="jobTitle"
-                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                  >
-                    Business Phone*
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="inquiry"
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                  >
-                    I would like to
-                  </label>
-                  <select
-                    id="inquiry"
-                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="request_demo">Request a Demo</option>
-                    <option value="sales_inquiry">Make a Sales Inquiry</option>
-                    <option value="technical_support">
-                      Get Technical Support
-                    </option>
-                    <option value="general_info">
-                      Get General Information
-                    </option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    htmlFor="comments"
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                  >
-                    Additional Comments
-                  </label>
-                  <textarea
-                    id="comments"
-                    rows={4}
-                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[hsl(160.1,84.1%,39.4%)] focus:outline-none focus:ring-1 focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  className="group inline-flex w-full transform items-center justify-center rounded-md border border-transparent bg-[hsl(160.1,84.1%,39.4%)] px-6 py-3 text-base font-medium text-white transition-all duration-300 ease-in-out hover:bg-[hsl(160.1,84.1%,34.4%)] focus:outline-none focus:ring-2 focus:ring-[hsl(160.1,84.1%,39.4%)] focus:ring-offset-2"
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
                 >
-                  Submit
-                  <ArrowRight
-                    className={`ml-2 h-5 w-5 text-white transition-all duration-300 ${isHovered ? "translate-x-1" : ""}`}
+                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>First Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="John" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Last Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Doe" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Business Email</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="john.doe@company.com"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </button>
-              </form>
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Acme Inc." {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="jobTitle"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Job Title</FormLabel>
+                        <FormControl>
+                          <Input placeholder="IT Manager" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Business Phone</FormLabel>
+                        <FormControl>
+                          <Input placeholder="+1 (555) 000-0000" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="inquiry"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>I would like to</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select an option" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="request_demo">
+                              Schedule Product Demo
+                            </SelectItem>
+                            <SelectItem value="sales_inquiry">
+                              Get Information about Dcase
+                            </SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="comments"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Additional Comments</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Tell us more about your needs..."
+                            className="resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button
+                    type="submit"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className="w-full"
+                  >
+                    Submit
+                    <ArrowRight
+                      className={`ml-2 h-5 w-5 transition-all duration-300 ${isHovered ? "translate-x-1" : ""}`}
+                    />
+                  </Button>
+                </form>
+              </Form>
             </div>
           </div>
           {/* Bottom section */}
@@ -236,55 +305,43 @@ export default function ContactPage() {
             <h3 className="mb-6 text-2xl font-semibold text-gray-900">
               Frequently Asked Questions
             </h3>
-            <div className="space-y-4">
-              {[
-                {
-                  question: "What is DCase?",
-                  answer:
-                    "DCase is a comprehensive ITSM (IT Service Management) solution designed to streamline and optimize IT processes for businesses of all sizes.",
-                },
-                {
-                  question: "How can I request a demo?",
-                  answer:
-                    "You can request a demo by filling out the contact form above or by emailing us directly at demo@dcase.com.",
-                },
-                {
-                  question: "What kind of support does DCase offer?",
-                  answer:
-                    "DCase offers 24/7 technical support, as well as dedicated account managers for enterprise clients. Our support team is available via email, phone, and live chat.",
-                },
-                {
-                  question: "Is DCase suitable for small businesses?",
-                  answer:
-                    "Yes, DCase offers scalable solutions that cater to businesses of all sizes, from small startups to large enterprises. We have flexible pricing plans to suit various needs and budgets.",
-                },
-              ].map((faq, index) => {
-                return (
-                  <div key={index} className="border-b border-gray-200 pb-4">
-                    <button
-                      className="flex w-full items-center justify-between text-left"
-                      onClick={() => {
-                        const newExpandedFaqs = [...expandedFaqs];
-                        newExpandedFaqs[index] = !newExpandedFaqs[index];
-                        setExpandedFaqs(newExpandedFaqs);
-                      }}
-                    >
-                      <h4 className="text-lg font-medium text-gray-900">
-                        {faq.question}
-                      </h4>
-                      {expandedFaqs[index] ? (
-                        <ChevronUp className="h-5 w-5 text-gray-500" />
-                      ) : (
-                        <ChevronDown className="h-5 w-5 text-gray-500" />
-                      )}
-                    </button>
-                    {expandedFaqs[index] && (
-                      <p className="mt-2 text-gray-600">{faq.answer}</p>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>What is DCase?</AccordionTrigger>
+                <AccordionContent>
+                  DCase is a comprehensive ITSM (IT Service Management) solution
+                  designed to streamline and optimize IT processes for
+                  businesses of all sizes.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>How can I request a demo?</AccordionTrigger>
+                <AccordionContent>
+                  You can request a demo by filling out the contact form above
+                  or by emailing us directly at demo@dcase.com.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>
+                  What kind of support does DCase offer?
+                </AccordionTrigger>
+                <AccordionContent>
+                  DCase offers 24/7 technical support, as well as dedicated
+                  account managers for enterprise clients. Our support team is
+                  available via email, phone, and live chat.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger>
+                  Is DCase suitable for small businesses?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Yes, DCase offers scalable solutions that cater to businesses
+                  of all sizes, from small startups to large enterprises. We
+                  have flexible pricing plans to suit various needs and budgets.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </div>

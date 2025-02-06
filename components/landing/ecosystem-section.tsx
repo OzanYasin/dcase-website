@@ -62,16 +62,16 @@ export default function EcosystemSection() {
           </motion.h1>
           <motion.div
             variants={itemVariants}
-            className="group relative mb-16 aspect-[21/9] w-full overflow-hidden rounded-xl shadow-lg"
+            className="group relative mb-16 aspect-[21/9] w-full overflow-hidden rounded-xl"
           >
             <Image
-              src="/lp-ecosystem.gif"
+              src="/lp-ecosystem-02.png"
               alt="DCase Ecosystem visualization"
               layout="fill"
               objectFit="cover"
               className="transition-all duration-300 hover:brightness-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div> */}
             <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
                 {[
