@@ -1,30 +1,47 @@
-import { LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface BenefitCardProps {
   icon: LucideIcon;
   title: string;
-  description: string;
+  description: Array<{
+    subtitle: string;
+    text: string;
+    icon: LucideIcon;
+  }>;
+  className?: string;
 }
 
 export function BenefitCard({
   icon: Icon,
   title,
   description,
+  className,
 }: BenefitCardProps) {
+  console.log("Rendering BenefitCard:", title);
   return (
-    <div className="group relative overflow-hidden rounded-lg bg-white shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800">
-      <div className="absolute bottom-0 left-0 top-0 w-1 origin-top scale-y-0 bg-dcase transition-transform duration-300 group-hover:scale-y-100"></div>
-      <div className="p-8">
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-dcase text-white transition-transform duration-300 group-hover:scale-110">
-          <Icon className="h-8 w-8" />
+    <div className={`flex items-center gap-8 ${className}`}>
+      <div className="group flex-1 rounded-lg bg-white p-8 shadow-md transition-all duration-300 ease-in-out hover:shadow-lg">
+        <h2 className="mb-6 text-2xl font-bold text-gray-900">{title}</h2>
+        <div className="space-y-6">
+          {description.map((item, index) => (
+            <div key={index} className="group/item flex items-start">
+              <div className="mr-4 mt-1 flex-shrink-0 rounded-lg bg-emerald-100 p-2 transition-colors duration-300 ease-in-out group-hover/item:bg-emerald-200">
+                <item.icon className="h-6 w-6 text-emerald-600 transition-transform duration-300 ease-in-out group-hover/item:scale-110" />
+              </div>
+              <div>
+                <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                  {item.subtitle}
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-600">
+                  {item.text}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-        <h3 className="mb-4 text-2xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-primary dark:text-white">
-          {title}
-        </h3>
-        <p
-          className="leading-relaxed text-gray-600 dark:text-gray-300"
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
+      </div>
+      <div className="flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-teal-400 text-white transition-transform duration-300 ease-in-out group-hover:scale-110">
+        <Icon className="h-16 w-16" />
       </div>
     </div>
   );

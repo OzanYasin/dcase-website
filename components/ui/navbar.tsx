@@ -145,17 +145,23 @@ export default function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <Link
           href="/"
-          className="absolute left-6 top-4 flex items-center gap-1.5 font-semibold text-white"
+          className="absolute left-6 top-2.5 flex items-center gap-2 font-semibold text-white"
         >
           <Image
             src="/vectorize-logo-icon.svg"
             alt="Logo"
-            width={40}
-            height={40}
+            width={50}
+            height={50}
           />
-          dcase
+          <span className="text-xl">dcase</span>
         </Link>
         <div className="flex space-x-4 md:space-x-6 lg:space-x-10">
+          <MenuItem setActive={setActive} active={active} item="Landing">
+            <div className="flex flex-col space-y-4 text-sm">
+              <HoveredLink href="/">About V1</HoveredLink>
+              <HoveredLink href="/landing-v2">About V2</HoveredLink>
+            </div>
+          </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Platform">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/product">Product Overview</HoveredLink>
@@ -179,12 +185,18 @@ export default function Navbar({ className }: { className?: string }) {
           >
             Resources
           </Link>
-          <Link
+          {/* <Link
             href="/about"
             className="cursor-pointer text-white hover:opacity-[0.9]"
           >
             About
-          </Link>
+          </Link> */}
+          <MenuItem setActive={setActive} active={active} item="About">
+            <div className="flex flex-col space-y-4 text-sm">
+              <HoveredLink href="/about">About V1</HoveredLink>
+              <HoveredLink href="/about-v2">About V2</HoveredLink>
+            </div>
+          </MenuItem>
           <Link
             href="/contact"
             className="cursor-pointer text-white hover:opacity-[0.9]"

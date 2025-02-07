@@ -10,7 +10,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 // const HeroModel = dynamic(() => import("./hero-model"), { ssr: false });
 
 const HeroSection: React.FC = () => {
-  const words = ["Modern", "Efficient", "Reliable", "Streamlined", "Compliant"];
+  const words = ["Cognitive", "Agile", "Unified", "Reliable", "Scalable"];
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -22,17 +22,19 @@ const HeroSection: React.FC = () => {
               <FlipWords className="text-dcase" words={words} /> <br />
               IT Ecosystem
               <div className="mt-8 text-lg font-extralight leading-loose text-muted-foreground">
-                Transform your IT operations with DCase, an innovative platform
-                that redefines service management through intelligent workflows,
-                unified integrations, and unmatched scalability.
+                Empower your IT ecosystem with DCase where intelligent
+                workflows, seamless automation, and adaptive integrations drive
+                operational excellence.
                 <div className="mt-5">
-                  Simplify processes and deliver results faster than ever.
+                  Revolutionize IT service management with an intuitive platform
+                  that optimizes efficiency, enhances collaboration, and ensures
+                  business continuity at scale.
                 </div>
               </div>
             </div>
             <div>
               <button className="duration-400 transform rounded-lg bg-dcase px-6 py-2 font-bold text-white transition hover:-translate-y-1">
-                Request a Demo
+                See DCase in Action
               </button>
             </div>
           </div>
