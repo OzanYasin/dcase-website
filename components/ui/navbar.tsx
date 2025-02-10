@@ -116,7 +116,7 @@ export default function Navbar({ className }: { className?: string }) {
                 About
               </Link>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="text-sidebar-foreground cursor-pointer hover:opacity-90"
                 onClick={() => setOpenMobile(false)}
               >
@@ -158,8 +158,8 @@ export default function Navbar({ className }: { className?: string }) {
         <div className="flex space-x-4 md:space-x-6 lg:space-x-10">
           <MenuItem setActive={setActive} active={active} item="Landing">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/">About V1</HoveredLink>
-              <HoveredLink href="/landing-v2">About V2</HoveredLink>
+              <HoveredLink href="/">Landing V1</HoveredLink>
+              <HoveredLink href="/landing-v2">Landing V2</HoveredLink>
             </div>
           </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Platform">
@@ -199,7 +199,7 @@ export default function Navbar({ className }: { className?: string }) {
             </div>
           </MenuItem>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="cursor-pointer text-white hover:opacity-[0.9]"
           >
             Contact

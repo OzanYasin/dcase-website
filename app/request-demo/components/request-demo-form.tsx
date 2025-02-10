@@ -28,37 +28,73 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
-import { formSchema, type FormValues } from "@/lib/schema";
-import { Canvas } from "@react-three/fiber";
 import React from "react";
-import { OrbitControls } from "@react-three/drei";
-import HeroModel from "@/components/landing/hero-section/hero-model";
+import { z } from "zod";
+import { toast } from "sonner";
+import { submitRequestDemo } from "@/app/_actions/request-demo";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
+export const requestDemoFormSchema = z.object({
+  type: z.literal("demo"),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  jobTitle: z.string().min(1, "Job title is required"),
+  businessPhone: z.string().min(1, "Business phone is required"),
+  businessEmail: z.string().email("Invalid email address"),
+  company: z.string().min(1, "Company is required"),
+  preferredDemoDate: z
+    .string()
+    .min(1, "Preferred demo date and time is required"),
+  focusedAreas: z
+    .array(z.string())
+    .min(1, "Please select at least one focus area"),
+  currentItsmChallenge: z.string().optional(),
+});
+
+type FormValues = z.infer<typeof requestDemoFormSchema>;
+
 export default function RequestDemoForm() {
+  const [isPending, startTransition] = React.useTransition();
+
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(requestDemoFormSchema),
     defaultValues: {
+      type: "demo",
       firstName: "",
       lastName: "",
-      email: "",
-      company: "",
       jobTitle: "",
       businessPhone: "",
-      demoDateTime: undefined,
-      focusAreas: [],
-      currentChallenges: "",
-      privacyConsent: false,
+      businessEmail: "",
+      preferredDemoDate: undefined,
+      company: "",
+      focusedAreas: [],
+      currentItsmChallenge: "",
     },
   });
 
-  function onSubmit(data: FormValues) {
-    console.log("Form submitted:", data);
-  }
+  const onSubmit = async (data: FormValues) => {
+    startTransition(() => {
+      toast.promise(
+        async () => {
+          await submitRequestDemo(data);
+          form.reset();
+        },
+        {
+          loading: "Sending...",
+          success: "Form sent successfully!",
+          error: (error) =>
+            `Error: ${error instanceof Error ? error.message : String(error)}`,
+        },
+      );
+    });
+  };
+
+  // TODO: RM LOG
+  console.log(isPending);
 
   return (
     <motion.div
@@ -66,226 +102,398 @@ export default function RequestDemoForm() {
       animate="visible"
       variants={fadeIn}
       transition={{ duration: 0.5 }}
-      className="mx-auto w-full max-w-4xl px-4 py-8"
+      className="mx-auto w-full max-w-xl px-4 py-8"
     >
-      <Card className="overflow-hidden border-none bg-gradient-to-br from-white to-gray-50 shadow-2xl">
-        <CardContent className="p-8 sm:p-12">
-          <div className="relative mb-10 text-center">
-            <div className="mb-4 flex justify-center">
-              <Canvas
-                camera={{ position: [0, 0, 500], fov: 60 }}
-                style={{ width: "100%", height: "100%" }}
-              >
-                <ambientLight intensity={0.5} />
-                <pointLight position={[100, 100, 100]} intensity={0.8} />
-                <pointLight position={[-100, -100, -100]} intensity={0.5} />
-                <React.Suspense fallback={null}>
-                  <HeroModel />
-                </React.Suspense>
-                <OrbitControls enableZoom={false} />
-              </Canvas>
-            </div>
-            <h1 className="mb-3 text-4xl font-bold text-gray-900 sm:text-5xl">
-              Request a Demo
-            </h1>
-            <p className="text-xl text-gray-600">
-              Experience the future of our product firsthand
-            </p>
-          </div>
+      <Card className="overflow-hidden border-none bg-gradient-to-br from-white to-gray-100 shadow-xl">
+        <CardContent className="p-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <div className="space-y-8">
-                <div className="rounded-lg bg-white p-6 shadow-md">
-                  <h2 className="mb-6 text-2xl font-semibold text-[hsl(160.1,84.1%,39.4%)]">
-                    Your Details
-                  </h2>
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    {[
-                      { name: "firstName", label: "First Name", type: "text" },
-                      { name: "lastName", label: "Last Name", type: "text" },
-                      { name: "email", label: "Business Email", type: "email" },
-                      { name: "company", label: "Company", type: "text" },
-                      { name: "jobTitle", label: "Job Title", type: "text" },
-                      {
-                        name: "businessPhone",
-                        label: "Business Phone",
-                        type: "tel",
-                      },
-                    ].map((field) => (
-                      <FormField
-                        key={field.name}
-                        control={form.control}
-                        name={field.name as keyof FormValues}
-                        render={({ field: fieldProps }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700">
-                              {field.label}*
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type={field.type}
-                                {...fieldProps}
-                                value={fieldProps.value as string}
-                                className="border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-white p-6 shadow-md">
-                  <h2 className="mb-6 text-2xl font-semibold text-[hsl(160.1,84.1%,39.4%)]">
-                    Your Preferences
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="demoDateTime"
-                    render={({ field }) => (
-                      <FormItem className="mb-4 flex w-1/2 flex-col">
-                        <FormLabel className="mb-2 text-gray-700">
-                          Preferred Demo Date*
-                        </FormLabel>
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <FormControl>
-                              <Button
-                                variant={"outline"}
-                                className={`w-full pl-3 text-left font-normal ${
-                                  !field.value && "text-muted-foreground"
-                                } border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]`}
-                              >
-                                {field.value ? (
-                                  format(field.value, "PPP")
-                                ) : (
-                                  <span>Pick a date</span>
-                                )}
-                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                              </Button>
-                            </FormControl>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-auto p-0" align="start">
-                            <Calendar
-                              mode="single"
-                              selected={
-                                field.value ? new Date(field.value) : undefined
-                              }
-                              onSelect={(date) => {
-                                field.onChange(date);
-                              }}
-                              initialFocus
-                            />
-                          </PopoverContent>
-                        </Popover>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="focusAreas"
-                    render={() => (
-                      <FormItem>
-                        <FormLabel className="mb-4 block text-gray-700">
-                          Focus Areas You&apos;d Like to Explore:
-                        </FormLabel>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          {[
-                            "Request Management",
-                            "Incident Management",
-                            "Workflow Automation",
-                            "SLA/OLA Management",
-                            "Reporting and Analytics",
-                            "Asset & CMDB Integration",
-                          ].map((area) => (
-                            <FormField
-                              key={area}
-                              control={form.control}
-                              name="focusAreas"
-                              render={({ field }) => {
-                                return (
-                                  <FormItem
-                                    key={area}
-                                    className="flex items-start space-x-3 space-y-0"
-                                  >
-                                    <FormControl>
-                                      <Checkbox
-                                        checked={field.value?.includes(area)}
-                                        onCheckedChange={(checked) => {
-                                          return checked
-                                            ? field.onChange([
-                                                ...(field.value || []),
-                                                area,
-                                              ])
-                                            : field.onChange(
-                                                field.value?.filter(
-                                                  (value) => value !== area,
-                                                ),
-                                              );
-                                        }}
-                                      />
-                                    </FormControl>
-                                    <FormLabel className="font-normal">
-                                      {area}
-                                    </FormLabel>
-                                  </FormItem>
-                                );
-                              }}
-                            />
-                          ))}
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="currentChallenges"
-                    render={({ field }) => (
-                      <FormItem className="mt-6">
-                        <FormLabel className="text-gray-700">
-                          Current ITSM Challenges (Optional):
-                        </FormLabel>
-                        <FormControl>
-                          <Textarea
-                            {...field}
-                            className="resize-none border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
-                            placeholder="Describe your current ITSM challenges..."
-                            rows={4}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <FormField
                   control={form.control}
-                  name="privacyConsent"
+                  name="firstName"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                    <FormItem>
+                      <FormLabel>
+                        First Name<span className="text-red-500"> *</span>
+                      </FormLabel>
                       <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
+                        <Input
+                          type="text"
+                          {...field}
+                          className="border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
                         />
                       </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel>
-                          I agree to the Privacy Policy and consent to the
-                          processing of my data.
-                        </FormLabel>
-                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Last Name<span className="text-red-500"> *</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          className="border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="businessEmail"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2">
+                      <FormLabel>
+                        Business Email
+                        <span className="text-red-500"> *</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          className="border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2">
+                      <FormLabel>
+                        Company<span className="text-red-500"> *</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          className="border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="jobTitle"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2">
+                      <FormLabel>
+                        Job Title<span className="text-red-500"> *</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          className="border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="businessPhone"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2">
+                      <FormLabel>
+                        Business Phone
+                        <span className="text-red-500"> *</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          {...field}
+                          className="border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
+                        />
+                      </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
+              <FormField
+                control={form.control}
+                name="preferredDemoDate"
+                render={({ field }) => (
+                  <FormItem className="col-span-2 mb-4">
+                    <FormLabel className="mb-2">
+                      Preferred Demo Date
+                      <span className="text-red-500"> *</span>
+                    </FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className={`w-full pl-3 text-left font-normal ${
+                              !field.value && "text-muted-foreground"
+                            } border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]`}
+                          >
+                            {field.value ? (
+                              format(new Date(field.value), "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={
+                            field.value ? new Date(field.value) : undefined
+                          }
+                          onSelect={(date) =>
+                            field.onChange(
+                              date
+                                ? format(date, "yyyy-MM-dd HH:mm:ss")
+                                : undefined,
+                            )
+                          }
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="focusedAreas"
+                render={() => (
+                  <FormItem>
+                    <FormLabel className="mb-4 block">
+                      Focus Areas You&apos;d Like to Explore:
+                    </FormLabel>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <FormField
+                        control={form.control}
+                        name="focusedAreas"
+                        render={({ field }) => (
+                          <FormItem className="flex items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(
+                                  "Request Management",
+                                )}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        "Request Management",
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) =>
+                                            value !== "Request Management",
+                                        ),
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Request Management
+                            </FormLabel>
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="focusedAreas"
+                        render={({ field }) => (
+                          <FormItem className="flex items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(
+                                  "Incident Management",
+                                )}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        "Incident Management",
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) =>
+                                            value !== "Incident Management",
+                                        ),
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Incident Management
+                            </FormLabel>
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="focusedAreas"
+                        render={({ field }) => (
+                          <FormItem className="flex items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(
+                                  "Workflow Automation",
+                                )}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        "Workflow Automation",
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) =>
+                                            value !== "Workflow Automation",
+                                        ),
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Workflow Automation
+                            </FormLabel>
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="focusedAreas"
+                        render={({ field }) => (
+                          <FormItem className="flex items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(
+                                  "SLA/OLA Management",
+                                )}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        "SLA/OLA Management",
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) =>
+                                            value !== "SLA/OLA Management",
+                                        ),
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              SLA/OLA Management
+                            </FormLabel>
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="focusedAreas"
+                        render={({ field }) => (
+                          <FormItem className="flex items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(
+                                  "Reporting and Analytics",
+                                )}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        "Reporting and Analytics",
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) =>
+                                            value !== "Reporting and Analytics",
+                                        ),
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Reporting and Analytics
+                            </FormLabel>
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="focusedAreas"
+                        render={({ field }) => (
+                          <FormItem className="flex items-start space-x-3 space-y-0">
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(
+                                  "Asset & CMDB Integration",
+                                )}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...(field.value || []),
+                                        "Asset & CMDB Integration",
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) =>
+                                            value !==
+                                            "Asset & CMDB Integration",
+                                        ),
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Asset & CMDB Integration
+                            </FormLabel>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="currentItsmChallenge"
+                render={({ field }) => (
+                  <FormItem className="mt-6">
+                    <FormLabel>Current ITSM Challenges (Optional):</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        {...field}
+                        className="resize-none border-2 transition-colors focus:border-[hsl(160.1,84.1%,39.4%)] focus:ring-[hsl(160.1,84.1%,39.4%)]"
+                        placeholder="Describe your current ITSM challenges..."
+                        rows={4}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <Separator className="bg-gray-200" />
               <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                 <Button
@@ -293,7 +501,7 @@ export default function RequestDemoForm() {
                   className="w-full transform bg-[hsl(160.1,84.1%,39.4%)] px-8 py-3 text-lg text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-[hsl(160.1,84.1%,34.4%)] sm:w-auto"
                   size="lg"
                 >
-                  Submit Your Details
+                  Submit
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <p className="flex items-center text-sm text-gray-600">

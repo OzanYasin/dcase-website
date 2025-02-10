@@ -1,7 +1,7 @@
 "use client";
 
 import { Phone, MapPin, Globe, ArrowRight, Mail } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -29,15 +29,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { submitContact } from "../_actions/contact";
+import { toast } from "sonner";
 
-const formSchema = z.object({
+export const contactFormSchema = z.object({
+  type: z.literal("contact"),
   firstName: z.string().min(2, {
     message: "First name must be at least 2 characters.",
   }),
   lastName: z.string().min(2, {
     message: "Last name must be at least 2 characters.",
   }),
-  email: z.string().email({
+  businessEmail: z.string().email({
     message: "Please enter a valid email address.",
   }),
   company: z.string().min(1, {
@@ -46,39 +49,55 @@ const formSchema = z.object({
   jobTitle: z.string().min(1, {
     message: "Job title is required.",
   }),
-  phone: z.string().min(1, {
+  businessPhone: z.string().min(1, {
     message: "Phone number is required.",
   }),
-  inquiry: z.string().min(1, {
-    message: "Please select an inquiry type.",
-  }),
-  comments: z.string().optional(),
+  contactUsReasons: z.array(z.string()).optional(),
+  additionalComments: z.string().optional(),
 });
+
+type FormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactPage() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isPending, startTransition] = React.useTransition();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
+      type: "contact",
       firstName: "",
       lastName: "",
-      email: "",
+      businessEmail: "",
       company: "",
       jobTitle: "",
-      phone: "",
-      inquiry: "",
-      comments: "",
+      businessPhone: "",
+      contactUsReasons: [],
+      additionalComments: undefined,
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // Handle form submission here
-  }
+  const onSubmit = async (data: FormValues) => {
+    startTransition(() => {
+      toast.promise(
+        async () => {
+          await submitContact(data);
+          form.reset();
+        },
+        {
+          loading: "Sending...",
+          success: "Form sent successfully!",
+          error: (error) =>
+            `Error: ${error instanceof Error ? error.message : String(error)}`,
+        },
+      );
+    });
+  };
+
+  console.log(isPending);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 px-4 py-32 sm:px-6 lg:px-8">
+    <div className="min-h-screen px-4 py-32 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="overflow-hidden rounded-3xl bg-white shadow-2xl">
           <div className="lg:flex">
@@ -162,7 +181,9 @@ export default function ContactPage() {
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>First Name</FormLabel>
+                          <FormLabel>
+                            First Name<span className="text-red-500"> *</span>
+                          </FormLabel>
                           <FormControl>
                             <Input placeholder="John" {...field} />
                           </FormControl>
@@ -175,7 +196,9 @@ export default function ContactPage() {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Last Name</FormLabel>
+                          <FormLabel>
+                            Last Name<span className="text-red-500"> *</span>
+                          </FormLabel>
                           <FormControl>
                             <Input placeholder="Doe" {...field} />
                           </FormControl>
@@ -186,10 +209,12 @@ export default function ContactPage() {
                   </div>
                   <FormField
                     control={form.control}
-                    name="email"
+                    name="businessEmail"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Business Email</FormLabel>
+                        <FormLabel>
+                          Business Email<span className="text-red-500"> *</span>
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="john.doe@company.com"
@@ -205,7 +230,9 @@ export default function ContactPage() {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Company</FormLabel>
+                        <FormLabel>
+                          Company<span className="text-red-500"> *</span>
+                        </FormLabel>
                         <FormControl>
                           <Input placeholder="Acme Inc." {...field} />
                         </FormControl>
@@ -218,7 +245,9 @@ export default function ContactPage() {
                     name="jobTitle"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Job Title</FormLabel>
+                        <FormLabel>
+                          Job Title<span className="text-red-500"> *</span>
+                        </FormLabel>
                         <FormControl>
                           <Input placeholder="IT Manager" {...field} />
                         </FormControl>
@@ -228,10 +257,12 @@ export default function ContactPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="phone"
+                    name="businessPhone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Business Phone</FormLabel>
+                        <FormLabel>
+                          Business Phone<span className="text-red-500"> *</span>
+                        </FormLabel>
                         <FormControl>
                           <Input placeholder="+1 (555) 000-0000" {...field} />
                         </FormControl>
@@ -241,13 +272,23 @@ export default function ContactPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="inquiry"
+                    name="contactUsReasons"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>I would like to</FormLabel>
                         <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
+                          onValueChange={(value: string) =>
+                            value === "none"
+                              ? field.onChange([])
+                              : field.onChange([value])
+                          }
+                          defaultValue={
+                            field.value &&
+                            Array.isArray(field.value) &&
+                            field.value.length > 0
+                              ? field.value[0]
+                              : "none"
+                          }
                         >
                           <FormControl>
                             <SelectTrigger>
@@ -255,13 +296,14 @@ export default function ContactPage() {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="request_demo">
+                            <SelectItem value="none">Please select</SelectItem>
+                            <SelectItem value="Schedule Product Demo">
                               Schedule Product Demo
                             </SelectItem>
-                            <SelectItem value="sales_inquiry">
+                            <SelectItem value="Get Information about Dcase">
                               Get Information about Dcase
                             </SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="Other">Other</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -270,7 +312,7 @@ export default function ContactPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="comments"
+                    name="additionalComments"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Additional Comments</FormLabel>
@@ -301,12 +343,12 @@ export default function ContactPage() {
             </div>
           </div>
           {/* Bottom section */}
-          <div className="bg-gray-50 px-8 py-8 lg:px-12">
+          <div className="bg-dcase-secondary-light/30 px-8 py-8 lg:px-12">
             <h3 className="mb-6 text-2xl font-semibold text-gray-900">
               Frequently Asked Questions
             </h3>
             <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
+              <AccordionItem value="item-1 border-black">
                 <AccordionTrigger>What is DCase?</AccordionTrigger>
                 <AccordionContent>
                   DCase is a comprehensive ITSM (IT Service Management) solution
@@ -314,14 +356,14 @@ export default function ContactPage() {
                   businesses of all sizes.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-2">
+              <AccordionItem value="item-2 border-black">
                 <AccordionTrigger>How can I request a demo?</AccordionTrigger>
                 <AccordionContent>
                   You can request a demo by filling out the contact form above
                   or by emailing us directly at demo@dcase.com.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-3">
+              <AccordionItem value="item-3 border-black">
                 <AccordionTrigger>
                   What kind of support does DCase offer?
                 </AccordionTrigger>
@@ -331,7 +373,7 @@ export default function ContactPage() {
                   available via email, phone, and live chat.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-4">
+              <AccordionItem value="item-4 border-black">
                 <AccordionTrigger>
                   Is DCase suitable for small businesses?
                 </AccordionTrigger>
