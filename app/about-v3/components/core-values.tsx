@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  Lightbulb,
-  Users,
-  Shield,
-  Network,
-  ChevronRight,
-  ArrowRight,
-} from "lucide-react";
-import type React from "react";
 import { Card } from "@/components/ui/card";
+import { ArrowRight, Lightbulb, Network, Shield, Users } from "lucide-react";
+import type React from "react";
 
 interface ValueCardProps {
   icon: React.ReactNode;
