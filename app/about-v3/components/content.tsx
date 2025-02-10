@@ -3,6 +3,54 @@ import Image from "next/image";
 export function Content() {
   return (
     <main className="mx-auto max-w-5xl flex-1 px-8 py-12">
+      <section id="mission" className="mb-24">
+        <h2 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
+          Our Mission
+        </h2>
+        <div className="mb-8 flex flex-col items-center gap-8 md:flex-row">
+          <Image
+            src="/placeholder.svg"
+            alt="Our Mission"
+            width={350}
+            height={250}
+            className="rounded-lg shadow-md"
+          />
+          <div className="prose prose-lg max-w-none">
+            <p className="text-lg leading-7 [&:not(:first-child)]:mt-6">
+              To simplify IT operations and enable businesses to focus on their
+              core goals by providing innovative, intuitive, and efficient ITSM
+              solutions. We believe that well-structured IT processes lead to
+              more meaningful business outcomes, fostering productivity and
+              long-term success.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="vision" className="mb-24">
+        <h2 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
+          Our Vision
+        </h2>
+        <div className="mb-8 flex flex-col items-center gap-8 md:flex-row-reverse">
+          <Image
+            src="/placeholder.svg"
+            alt="Our Vision"
+            width={400}
+            height={300}
+            className="rounded-lg shadow-md"
+          />
+          <div className="prose prose-lg max-w-none">
+            <p className="text-lg leading-7 [&:not(:first-child)]:mt-6">
+              We envision a future where IT Service Management is effortless,
+              proactive, and precisely tailored to each organization&apos;s
+              unique needs. Through smart technology and user-centric design, we
+              are paving the way for businesses to operate at their peak
+              potential and thrive in an ever-evolving marketplace.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section id="expertise" className="mb-24">
         <h1 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
           Over 25 Years of Combined Expertise
@@ -47,54 +95,6 @@ export function Content() {
               landscape. Our approach ensures that IT services remain aligned
               with evolving business needs, driving impactful results and
               continuous growth.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="mission" className="mb-24">
-        <h2 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
-          Our Mission
-        </h2>
-        <div className="mb-8 flex flex-col items-center gap-8 md:flex-row">
-          <Image
-            src="/placeholder.svg"
-            alt="Our Mission"
-            width={350}
-            height={250}
-            className="rounded-lg shadow-md"
-          />
-          <div className="prose prose-lg max-w-none">
-            <p className="text-lg leading-7 [&:not(:first-child)]:mt-6">
-              To simplify IT operations and enable businesses to focus on their
-              core goals by providing innovative, intuitive, and efficient ITSM
-              solutions. We believe that well-structured IT processes lead to
-              more meaningful business outcomes, fostering productivity and
-              long-term success.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="vision" className="mb-24">
-        <h2 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
-          Our Vision
-        </h2>
-        <div className="mb-8 flex flex-col items-center gap-8 md:flex-row-reverse">
-          <Image
-            src="/placeholder.svg"
-            alt="Our Vision"
-            width={400}
-            height={300}
-            className="rounded-lg shadow-md"
-          />
-          <div className="prose prose-lg max-w-none">
-            <p className="text-lg leading-7 [&:not(:first-child)]:mt-6">
-              We envision a future where IT Service Management is effortless,
-              proactive, and precisely tailored to each organization&apos;s
-              unique needs. Through smart technology and user-centric design, we
-              are paving the way for businesses to operate at their peak
-              potential and thrive in an ever-evolving marketplace.
             </p>
           </div>
         </div>

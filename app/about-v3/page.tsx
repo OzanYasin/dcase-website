@@ -70,10 +70,10 @@ export default function AboutPage() {
               DCase
             </span>
           </h1>
-          <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-600 sm:text-2xl">
+          <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight text-gray-700 first:mt-0">
             Revolutionizing IT Service Management with over 25 years of
             collective experience
-          </p>
+          </h2>
           <div className="mx-auto my-12 block max-h-[180px] w-full">
             <Image
               src="/placeholder.svg"

@@ -27,20 +27,20 @@ export function TableOfContents({
 
   const sections = [
     {
-      id: "expertise",
-      title: "Over 25 Years of Combined Expertise",
-    },
-    {
-      id: "innovation",
-      title: "Revolutionizing ITSM through Innovation",
-    },
-    {
       id: "mission",
       title: "Our Mission",
     },
     {
       id: "vision",
       title: "Our Vision",
+    },
+    {
+      id: "expertise",
+      title: "Over 25 Years of Combined Expertise",
+    },
+    {
+      id: "innovation",
+      title: "Revolutionizing ITSM through Innovation",
     },
   ];
 
