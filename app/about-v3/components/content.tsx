@@ -16,7 +16,7 @@ export function Content() {
             className="rounded-lg shadow-md"
           />
           <div className="prose prose-lg max-w-none">
-            <p className="leading-relaxed text-gray-600">
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
               At DCase, we leverage over 25 years of collective ITSM experience
               to develop solutions that address the unique challenges of modern
               service management. By merging proven methodologies with
@@ -40,7 +40,7 @@ export function Content() {
             className="rounded-lg shadow-md"
           />
           <div className="prose prose-lg max-w-none">
-            <p className="leading-relaxed text-gray-600">
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
               We are committed to transforming IT Service Management by offering
               scalable, user-centric solutions that empower businesses to
               streamline operations and stay agile in a rapidly changing digital
@@ -65,7 +65,7 @@ export function Content() {
             className="rounded-lg shadow-md"
           />
           <div className="prose prose-lg max-w-none">
-            <p className="leading-relaxed text-gray-600">
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
               To simplify IT operations and enable businesses to focus on their
               core goals by providing innovative, intuitive, and efficient ITSM
               solutions. We believe that well-structured IT processes lead to
@@ -89,7 +89,7 @@ export function Content() {
             className="rounded-lg shadow-md"
           />
           <div className="prose prose-lg max-w-none">
-            <p className="leading-relaxed text-gray-600">
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
               We envision a future where IT Service Management is effortless,
               proactive, and precisely tailored to each organization&apos;s
               unique needs. Through smart technology and user-centric design, we
