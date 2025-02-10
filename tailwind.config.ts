@@ -15,6 +15,15 @@ const config: Config = {
         dcase: {
           DEFAULT: "hsl(var(--dcase))",
           foreground: "hsl(var(--dcase-foreground))",
+          dark: "hsl(160.1, 84.1%, 29.4%)",
+          darker: "hsl(160.1, 84.1%, 15%)",
+          darkest: "hsl(160.1, 84.1%, 10%)",
+          light: "hsl(160.1, 84.1%, 49.4%)",
+          lightest: "hsl(160.1, 84.1%, 90%)",
+        },
+        "dcase-secondary": {
+          DEFAULT: "hsl(var(--dcase-secondary))",
+          light: "hsl(32, 85%, 65%)",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

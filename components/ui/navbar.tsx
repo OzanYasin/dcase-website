@@ -195,6 +195,7 @@ export default function Navbar({ className }: { className?: string }) {
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/about">About V1</HoveredLink>
               <HoveredLink href="/about-v2">About V2</HoveredLink>
+              <HoveredLink href="/about-v3">About V3</HoveredLink>
             </div>
           </MenuItem>
           <Link
