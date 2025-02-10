@@ -7,6 +7,7 @@ import { Content } from "./components/content";
 import React from "react";
 import CoreValues from "./components/core-values";
 import Image from "next/image";
+import Link from "next/link";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -170,7 +171,9 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <Button className="group relative overflow-hidden rounded-full bg-emerald-600 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-emerald-700 hover:shadow-lg">
-                <span className="relative z-10">Contact Us</span>
+                <Link href="/contact" className="relative z-10">
+                  Contact Us
+                </Link>
                 <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               </Button>
             </motion.div>
