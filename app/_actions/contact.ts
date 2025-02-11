@@ -1,10 +1,8 @@
 "use server";
-import { z } from "zod";
-import { contactFormSchema } from "../contact-us/page";
 
-export type FormData = z.infer<typeof contactFormSchema>;
+import type { ContactForm } from "../schemas";
 
-export async function submitContact(data: FormData) {
+export async function submitContact(data: ContactForm) {
   const coreApiUrl = process.env.CORE_API_URL;
   const clientKey = process.env.CLIENT_KEY;
 

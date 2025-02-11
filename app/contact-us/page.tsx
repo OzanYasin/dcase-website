@@ -1,10 +1,11 @@
 "use client";
 
-import { Phone, MapPin, Globe, ArrowRight, Mail } from "lucide-react";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,7 +16,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -23,46 +23,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { submitContact } from "../_actions/contact";
+import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowRight, Globe, Mail, MapPin, Phone } from "lucide-react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-
-export const contactFormSchema = z.object({
-  type: z.literal("contact"),
-  firstName: z.string().min(2, {
-    message: "First name must be at least 2 characters.",
-  }),
-  lastName: z.string().min(2, {
-    message: "Last name must be at least 2 characters.",
-  }),
-  businessEmail: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  company: z.string().min(1, {
-    message: "Company name is required.",
-  }),
-  jobTitle: z.string().min(1, {
-    message: "Job title is required.",
-  }),
-  businessPhone: z.string().min(1, {
-    message: "Phone number is required.",
-  }),
-  contactUsReasons: z.array(z.string()).optional(),
-  additionalComments: z.string().optional(),
-});
-
-type FormValues = z.infer<typeof contactFormSchema>;
+import { submitContact } from "../_actions/contact";
+import { type ContactForm, contactFormSchema } from "../schemas";
 
 export default function ContactPage() {
   const [isHovered, setIsHovered] = useState(false);
   const [isPending, startTransition] = React.useTransition();
 
-  const form = useForm<FormValues>({
+  const form = useForm<ContactForm>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       type: "contact",
@@ -77,7 +51,7 @@ export default function ContactPage() {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: ContactForm) => {
     startTransition(() => {
       toast.promise(
         async () => {

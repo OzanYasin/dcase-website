@@ -1,19 +1,14 @@
 "use client";
 
+import { Checkbox } from "@/components/ui/checkbox";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { ArrowRight, CalendarIcon, CheckCircle } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { format } from "date-fns";
+import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import {
   Form,
   FormControl,
@@ -23,44 +18,30 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
-import React from "react";
-import { z } from "zod";
-import { toast } from "sonner";
 import { submitRequestDemo } from "@/app/_actions/request-demo";
+import { type RequestDemoForm, requestDemoFormSchema } from "@/app/schemas";
+import React from "react";
+import { toast } from "sonner";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
-export const requestDemoFormSchema = z.object({
-  type: z.literal("demo"),
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  jobTitle: z.string().min(1, "Job title is required"),
-  businessPhone: z.string().min(1, "Business phone is required"),
-  businessEmail: z.string().email("Invalid email address"),
-  company: z.string().min(1, "Company is required"),
-  preferredDemoDate: z
-    .string()
-    .min(1, "Preferred demo date and time is required"),
-  focusedAreas: z
-    .array(z.string())
-    .min(1, "Please select at least one focus area"),
-  currentItsmChallenge: z.string().optional(),
-});
-
-type FormValues = z.infer<typeof requestDemoFormSchema>;
-
 export default function RequestDemoForm() {
   const [isPending, startTransition] = React.useTransition();
 
-  const form = useForm<FormValues>({
+  const form = useForm<RequestDemoForm>({
     resolver: zodResolver(requestDemoFormSchema),
     defaultValues: {
       type: "demo",
@@ -76,7 +57,7 @@ export default function RequestDemoForm() {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: RequestDemoForm) => {
     startTransition(() => {
       toast.promise(
         async () => {
