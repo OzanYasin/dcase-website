@@ -1,10 +1,8 @@
 "use server";
-import { z } from "zod";
-import { requestDemoFormSchema } from "../request-demo/components/request-demo-form";
 
-export type FormData = z.infer<typeof requestDemoFormSchema>;
+import { type RequestDemoForm } from "../schemas";
 
-export async function submitRequestDemo(data: FormData) {
+export async function submitRequestDemo(data: RequestDemoForm) {
   const coreApiUrl = process.env.CORE_API_URL;
   const clientKey = process.env.CLIENT_KEY;
 
