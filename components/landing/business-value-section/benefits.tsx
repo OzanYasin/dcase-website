@@ -2,9 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import {
-  Zap,
-  ShieldCheck,
-  DollarSign,
   Workflow,
   Cog,
   BarChart3,
@@ -16,7 +13,7 @@ import { BenefitCard } from "./benefit-card";
 
 const benefits = [
   {
-    icon: Zap,
+    image: "/lp-benefit-01.png",
     title: "Operational Excellence & Business Agility",
     description: [
       {
@@ -32,7 +29,7 @@ const benefits = [
     ],
   },
   {
-    icon: ShieldCheck,
+    image: "/lp-benefit-02.png",
     title: "Proactive Downtime Prevention & Cost Reduction",
     description: [
       {
@@ -48,7 +45,7 @@ const benefits = [
     ],
   },
   {
-    icon: DollarSign,
+    image: "/lp-benefit-03.png",
     title: "Maximized ROI & Optimized IT Costs",
     description: [
       {
@@ -69,7 +66,6 @@ export default function Benefits() {
   const benefitsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("Benefits component mounted");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -82,7 +78,6 @@ export default function Benefits() {
     );
 
     const benefitCards = benefitsRef.current?.querySelectorAll(".benefit-card");
-    console.log("Number of benefit cards found:", benefitCards?.length);
     benefitCards?.forEach((card, index) => {
       (card as HTMLElement).style.animationDelay = `${index * 150}ms`;
       observer.observe(card);
@@ -105,7 +100,7 @@ export default function Benefits() {
         <div className="text-center">
           <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 subpixel-antialiased sm:text-6xl md:text-7xl">
             Drive{" "}
-            <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-dcase">
+            <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">
               Tangible
             </span>{" "}
             Results with DCase
@@ -116,15 +111,14 @@ export default function Benefits() {
           </p>
         </div>
         <div ref={benefitsRef} className="space-y-12 p-4">
-          {benefits.map((benefit, index) => {
-            return (
-              <BenefitCard
-                key={index}
-                {...benefit}
-                className={`benefit-card opacity-100 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
-              />
-            );
-          })}
+          {benefits.map((benefit, index) => (
+            <BenefitCard
+              key={index}
+              {...benefit}
+              className="benefit-card opacity-100"
+              imagePosition={index % 2 === 0 ? "left" : "right"}
+            />
+          ))}
         </div>
       </div>
     </div>

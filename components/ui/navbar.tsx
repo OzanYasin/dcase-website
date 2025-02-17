@@ -156,12 +156,6 @@ export default function Navbar({ className }: { className?: string }) {
           <span className="text-xl">dcase</span>
         </Link>
         <div className="flex space-x-4 md:space-x-6 lg:space-x-10">
-          <MenuItem setActive={setActive} active={active} item="Landing">
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/">Landing V1</HoveredLink>
-              <HoveredLink href="/landing-v2">Landing V2</HoveredLink>
-            </div>
-          </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Platform">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/product">Product Overview</HoveredLink>
@@ -185,19 +179,12 @@ export default function Navbar({ className }: { className?: string }) {
           >
             Resources
           </Link>
-          {/* <Link
+          <Link
             href="/about"
             className="cursor-pointer text-white hover:opacity-[0.9]"
           >
             About
-          </Link> */}
-          <MenuItem setActive={setActive} active={active} item="About">
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/about">About V1</HoveredLink>
-              <HoveredLink href="/about-v2">About V2</HoveredLink>
-              <HoveredLink href="/about-v3">About V3</HoveredLink>
-            </div>
-          </MenuItem>
+          </Link>
           <Link
             href="/contact-us"
             className="cursor-pointer text-white hover:opacity-[0.9]"
