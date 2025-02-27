@@ -1,27 +1,21 @@
 "use client";
 
-import React from "react";
+import { Menu } from "@/components/ui/navbar-menu";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { HoveredLink, Menu, MenuItem } from "@/components/ui/navbar-menu";
+import React from "react";
 import { Button } from "./button";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { MenuIcon } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./accordion";
 
 const SIDEBAR_WIDTH_MOBILE = "80%";
 
 export default function Navbar({ className }: { className?: string }) {
-  const [active, setActive] = React.useState<string | null>(null);
+  const [, setActive] = React.useState<string | null>(null);
   const isMobile = useIsMobile();
   const [openMobile, setOpenMobile] = React.useState(false);
 
@@ -60,10 +54,10 @@ export default function Navbar({ className }: { className?: string }) {
           >
             <div className="flex flex-col space-y-4">
               {/* Platform */}
-              <Accordion type="single" collapsible>
+              {/* <Accordion type="single" collapsible>
                 <AccordionItem value="platform">
                   <AccordionTrigger className="text-sidebar-foreground cursor-pointer">
-                    Platform
+                    Product
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="flex flex-col space-y-2 text-sm">
@@ -91,9 +85,14 @@ export default function Navbar({ className }: { className?: string }) {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-              </Accordion>
-
-              {/* Other links */}
+              </Accordion> */}
+              <Link
+                href="/product"
+                className="text-sidebar-foreground cursor-pointer hover:opacity-90"
+                onClick={() => setOpenMobile(false)}
+              >
+                Product
+              </Link>
               <Link
                 href="/solutions"
                 className="text-sidebar-foreground cursor-pointer hover:opacity-90"
@@ -156,7 +155,7 @@ export default function Navbar({ className }: { className?: string }) {
           <span className="text-xl">dcase</span>
         </Link>
         <div className="flex space-x-4 md:space-x-6 lg:space-x-10">
-          <MenuItem setActive={setActive} active={active} item="Platform">
+          {/* <MenuItem setActive={setActive} active={active} item="Platform">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/product">Product Overview</HoveredLink>
               <HoveredLink href="/platform-architecture">
@@ -166,7 +165,13 @@ export default function Navbar({ className }: { className?: string }) {
                 Deployment Models
               </HoveredLink>
             </div>
-          </MenuItem>
+          </MenuItem> */}
+          <Link
+            href="/product"
+            className="cursor-pointer text-white hover:opacity-[0.9]"
+          >
+            Product
+          </Link>
           <Link
             href="/solutions"
             className="cursor-pointer text-white hover:opacity-[0.9]"

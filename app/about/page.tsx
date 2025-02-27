@@ -57,31 +57,36 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <div className="mx-auto max-w-7xl py-40">
+      <div className="mx-auto max-w-7xl">
         <motion.header
-          className="mb-20 text-center"
+          className="flex h-screen items-center text-start"
           initial="initial"
           animate="animate"
           variants={fadeIn}
         >
-          <h1 className="mb-6 text-5xl font-extrabold text-gray-900 sm:text-6xl lg:text-7xl">
-            About{" "}
-            <span className="bg-gradient-to-r from-dcase to-emerald-600 bg-clip-text text-transparent">
-              DCase
-            </span>
-          </h1>
-          <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight text-gray-700 first:mt-0">
-            Revolutionizing IT Service Management with over 25 years of
-            collective experience
-          </h2>
-          <div className="mx-auto my-12 block max-h-[180px] w-full">
-            <Image
-              src="/placeholder.svg"
-              alt="placeholder"
-              width={1200}
-              height={180}
-              className="h-[180px] w-full object-cover"
-            />
+          <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+            <div className="space-y-6">
+              <h1 className="mb-6 text-5xl font-extrabold text-gray-900 sm:text-6xl lg:text-7xl">
+                About{" "}
+                <span className="bg-gradient-to-r from-dcase to-emerald-600 bg-clip-text text-transparent">
+                  DCase
+                </span>
+              </h1>
+              <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight text-gray-700 first:mt-0">
+                Revolutionizing IT Service Management with over 25 years of
+                collective experience
+              </h2>
+            </div>
+            <div className="relative h-[400px] w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-gray-200">
+              <Image
+                src="/auh.png"
+                alt="DCase team member"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </motion.header>
 
@@ -96,7 +101,7 @@ export default function AboutPage() {
         <CoreValues />
 
         <motion.section
-          className="relative mt-24 overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 p-8 text-center shadow-2xl sm:p-12 md:p-16"
+          className="relative my-24 overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 p-8 text-center shadow-2xl sm:p-12 md:p-16"
           variants={fadeIn}
           initial="initial"
           animate="animate"

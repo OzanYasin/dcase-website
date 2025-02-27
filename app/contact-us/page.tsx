@@ -1,11 +1,5 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -317,7 +311,7 @@ export default function ContactPage() {
             </div>
           </div>
           {/* Bottom section */}
-          <div className="bg-dcase-secondary-light/30 px-8 py-8 lg:px-12">
+          {/* <div className="bg-dcase-secondary-light/30 px-8 py-8 lg:px-12">
             <h3 className="mb-6 text-2xl font-semibold text-gray-900">
               Frequently Asked Questions
             </h3>
@@ -358,7 +352,7 @@ export default function ContactPage() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

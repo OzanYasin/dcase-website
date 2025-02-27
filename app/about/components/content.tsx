@@ -4,12 +4,12 @@ export function Content() {
   return (
     <main className="mx-auto max-w-5xl flex-1 px-8 py-12">
       <section id="mission" className="mb-24">
-        <h2 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
+        <h2 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Our Mission
         </h2>
         <div className="mb-8 flex flex-col items-center gap-8 md:flex-row">
           <Image
-            src="/placeholder.svg"
+            src="/au-1.png"
             alt="Our Mission"
             width={350}
             height={250}
@@ -28,12 +28,12 @@ export function Content() {
       </section>
 
       <section id="vision" className="mb-24">
-        <h2 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
+        <h2 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Our Vision
         </h2>
         <div className="mb-8 flex flex-col items-center gap-8 md:flex-row-reverse">
           <Image
-            src="/placeholder.svg"
+            src="/au-2.png"
             alt="Our Vision"
             width={400}
             height={300}
@@ -52,12 +52,12 @@ export function Content() {
       </section>
 
       <section id="expertise" className="mb-24">
-        <h1 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
+        <h1 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Over 25 Years of Combined Expertise
         </h1>
         <div className="mb-8 flex flex-col items-center gap-8 md:flex-row">
           <Image
-            src="/placeholder.svg"
+            src="/au-3.png"
             alt="25 Years of Expertise"
             width={400}
             height={300}
@@ -76,12 +76,12 @@ export function Content() {
       </section>
 
       <section id="innovation" className="mb-24">
-        <h2 className="to-dcase-secondary mb-8 bg-gradient-to-r from-dcase bg-clip-text text-4xl font-normal text-transparent">
+        <h2 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Revolutionizing ITSM through Innovation
         </h2>
         <div className="mb-8 flex flex-col items-center gap-8 md:flex-row-reverse">
           <Image
-            src="/placeholder.svg"
+            src="/au-4.png"
             alt="ITSM Innovation"
             width={450}
             height={350}
