@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
   const words = ["Cognitive", "Agile", "Unified", "Reliable", "Scalable"];
 
   return (
-    <section className="relative w-full overflow-hidden pb-12 pt-24">
+    <section className="relative w-full overflow-hidden pb-16 pt-32">
       <div className="container mx-auto flex h-full items-center justify-between px-4">
         <div className="z-10 w-1/2">
           <div className="flex flex-col space-y-10 px-4">
