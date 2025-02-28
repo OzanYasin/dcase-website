@@ -11,7 +11,7 @@ export default function RequestDemoPage() {
         <div className="mx-auto grid max-w-7xl items-start md:grid-cols-2">
           {/* Left side content - fixed and centered */}
           <div className="relative md:h-[calc(100vh-8rem)]">
-            <div className="top-[15%] flex flex-col md:fixed md:h-[calc(100vh-8rem)] md:w-[calc(50%-2rem)] md:max-w-[calc((1280px-4rem)/2)]">
+            <div className="top-[14%] flex flex-col md:fixed md:h-[calc(100vh-8rem)] md:w-[calc(50%-2rem)] md:max-w-[calc((1280px-4rem)/2)]">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -20,18 +20,18 @@ export default function RequestDemoPage() {
               >
                 <div className="space-y-6">
                   <motion.h1
-                    className="text-4xl font-bold text-black md:text-5xl lg:text-6xl"
+                    className="text-2xl font-bold text-black md:text-3xl lg:text-4xl"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.8 }}
                   >
-                    Request a demo
+                    Book your personalized demo
                   </motion.h1>
 
                   <motion.img
-                    src="/placeholder.svg"
+                    src="/request-demo.png"
                     alt="Placeholder"
-                    className="h-56 w-full rounded-lg shadow-md"
+                    className="h-72 rounded-lg shadow-md"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.25, duration: 0.8 }}

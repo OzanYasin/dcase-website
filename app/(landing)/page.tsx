@@ -4,7 +4,7 @@ import EcosystemSection from "@/app/(landing)/components/ecosystem-section";
 import HeroSection from "@/app/(landing)/components/hero-section/hero-section";
 import TestimonialSection from "@/app/(landing)/components/testimonials";
 import React from "react";
-import CircleImage from "./components/circle-image";
+import IntegrationSection from "./components/integration-section";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Benefits />
       <EcosystemSection />
       {/* <WhySection /> */}
-      <CircleImage />
+      <IntegrationSection />
       <TestimonialSection />
       <CTASection />
     </React.Fragment>

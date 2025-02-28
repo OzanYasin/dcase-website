@@ -37,156 +37,62 @@ export default function EcosystemSection() {
           className="flex flex-col items-center"
         >
           <div className="relative w-full overflow-hidden py-4">
-            {/* Enhanced subtle background */}
-            <div
-              className="absolute inset-0 z-0 bg-gradient-to-br from-[hsl(160.1,84.1%,39.4%)] to-transparent opacity-[0.03]"
-              style={{
-                maskImage:
-                  "radial-gradient(circle at 70% 30%, black, transparent 70%)",
-                WebkitMaskImage:
-                  "radial-gradient(circle at 70% 30%, black, transparent 70%)",
-              }}
-            />
-
-            {/* Animated hexagonal decorative elements */}
-            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-              <motion.div
-                className="absolute right-[15%] top-1/4"
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0.07, 0.05, 0.07],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-              >
-                <svg
-                  width="200"
-                  height="200"
-                  viewBox="0 0 200 200"
-                  fill="none"
-                  className="rotate-90 transform"
-                >
-                  <path
-                    d="M100 0 L175 43.3 L175 156.7 L100 200 L25 156.7 L25 43.3 Z"
-                    stroke="hsl(160.1,84.1%,39.4%)"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                </svg>
-              </motion.div>
-
-              <motion.div
-                className="absolute bottom-1/4 left-[15%]"
-                animate={{
-                  scale: [1, 1.03, 1],
-                  opacity: [0.05, 0.03, 0.05],
-                }}
-                transition={{
-                  duration: 10,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-              >
-                <svg
-                  width="300"
-                  height="300"
-                  viewBox="0 0 200 200"
-                  fill="none"
-                  className="-rotate-12 transform"
-                >
-                  <path
-                    d="M100 0 L175 43.3 L175 156.7 L100 200 L25 156.7 L25 43.3 Z"
-                    stroke="hsl(160.1,84.1%,39.4%)"
-                    strokeWidth="2"
-                    fill="none"
-                  />
-                </svg>
-              </motion.div>
-
-              {/* Additional smaller hexagon */}
-              <motion.div
-                className="absolute left-[25%] top-1/3"
-                animate={{
-                  scale: [1, 1.08, 1],
-                  opacity: [0.04, 0.02, 0.04],
-                }}
-                transition={{
-                  duration: 12,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 2,
-                }}
-              >
-                <svg
-                  width="150"
-                  height="150"
-                  viewBox="0 0 200 200"
-                  fill="none"
-                  className="rotate-45 transform"
-                >
-                  <path
-                    d="M100 0 L175 43.3 L175 156.7 L100 200 L25 156.7 L25 43.3 Z"
-                    stroke="hsl(160.1,84.1%,39.4%)"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                </svg>
-              </motion.div>
-            </div>
-
-            {/* Content */}
             <div className="container relative z-10 mx-auto px-4">
               <div className="mx-auto max-w-4xl text-center">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
+                  className="space-y-6 md:space-y-8"
                 >
                   {/* Enhanced main title */}
-                  <div className="relative inline-block">
+                  <div className="relative inline-flex items-baseline gap-3 md:gap-4">
                     <motion.div
-                      className="absolute -inset-x-6 -inset-y-4 rounded-xl bg-[hsl(160.1,84.1%,39.4%)] opacity-[0.08]"
-                      initial={{ scale: 0.85, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 0.08 }}
-                      transition={{ delay: 0.3, duration: 0.8 }}
+                      initial={{ width: 0 }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 1, delay: 0.2 }}
+                      className="absolute -inset-x-4 -inset-y-3 rounded-lg bg-gradient-to-r from-[hsl(160.1,84.1%,39.4%)] to-transparent opacity-[0.08]"
                     />
-                    <h1 className="relative text-4xl font-bold tracking-tight text-[hsl(160.1,84.1%,39.4%)] md:text-6xl">
-                      DCase
-                    </h1>
-                  </div>
-
-                  {/* Enhanced subtitle section */}
-                  <div className="relative mb-6 mt-8 flex items-center justify-center gap-4">
-                    <motion.div
-                      className="h-[1px] w-16 bg-gradient-to-r from-transparent via-[hsl(160.1,84.1%,39.4%)] to-transparent opacity-50 md:w-24"
-                      initial={{ width: 0, opacity: 0 }}
-                      animate={{ width: "6rem", opacity: 0.5 }}
-                      transition={{ delay: 0.5, duration: 0.8 }}
-                    />
-                    <h2 className="text-lg font-medium tracking-wide text-gray-800 md:text-2xl">
+                    <motion.h1
+                      className="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <span className="bg-gradient-to-r from-[hsl(160.1,84.1%,39.4%)] to-[hsl(160.1,84.1%,29.4%)] bg-clip-text text-transparent">
+                        DCase
+                      </span>
+                      <span className="text-[hsl(160.1,84.1%,39.4%)] opacity-90">
+                        :
+                      </span>
+                    </motion.h1>
+                    <motion.span
+                      className="text-2xl font-medium tracking-tight text-gray-800 md:text-2xl lg:text-3xl"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                    >
                       The Adaptive ITSM Engine
-                    </h2>
-                    <motion.div
-                      className="h-[1px] w-16 bg-gradient-to-r from-transparent via-[hsl(160.1,84.1%,39.4%)] to-transparent opacity-50 md:w-24"
-                      initial={{ width: 0, opacity: 0 }}
-                      animate={{ width: "6rem", opacity: 0.5 }}
-                      transition={{ delay: 0.5, duration: 0.8 }}
-                    />
+                    </motion.span>
                   </div>
 
-                  {/* Enhanced description */}
-                  <motion.h3
-                    className="mx-auto max-w-2xl text-xl font-semibold leading-relaxed text-gray-700 md:text-3xl"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7, duration: 0.8 }}
-                  >
-                    Enabling Unified Operations & Automation
-                  </motion.h3>
+                  {/* Enhanced description with animated underline */}
+                  <div className="relative inline-block">
+                    <motion.h2
+                      className="text-xl font-semibold leading-relaxed text-gray-700 md:text-2xl lg:text-3xl"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, duration: 0.8 }}
+                    >
+                      Enabling Unified Operations & Automation
+                    </motion.h2>
+                    <motion.div
+                      className="absolute -bottom-2 left-0 h-px w-full bg-gradient-to-r from-transparent via-[hsl(160.1,84.1%,39.4%)] to-transparent opacity-30"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.8, duration: 0.8 }}
+                    />
+                  </div>
                 </motion.div>
               </div>
             </div>
@@ -202,27 +108,10 @@ export default function EcosystemSection() {
               objectFit="cover"
               className="transition-all duration-300 hover:brightness-105"
             />
-            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div> */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-                {[
-                  "Seamless Integration",
-                  "Automated Workflows",
-                  "Exceptional Service",
-                ].map((feature, index) => (
-                  <span
-                    key={index}
-                    className="rounded-full bg-black/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm transition-transform duration-300 hover:scale-105 md:text-sm"
-                  >
-                    {feature}
-                  </span>
-                ))}
-              </div>
-            </div>
           </motion.div>
           <motion.p
             variants={itemVariants}
-            className="mx-auto mb-12 max-w-4xl text-center text-xl leading-relaxed text-gray-700 md:text-2xl"
+            className="mx-auto mb-12 w-full text-left text-xl leading-relaxed text-gray-700 md:text-2xl"
           >
             Unify your IT ecosystem with a centralized, event-driven platform.
             Integrate effortlessly with IVR, Email, APIs, and CRM while

@@ -107,17 +107,9 @@ export default function Benefits() {
 
   return (
     <div className="relative overflow-hidden bg-neutral-100 px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 transform animate-pulse">
-          <div className="h-64 w-64 rounded-full bg-emerald-100 opacity-20 blur-3xl md:h-96 md:w-96"></div>
-        </div>
-        <div className="animation-delay-1000 absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 transform animate-pulse">
-          <div className="h-64 w-64 rounded-full bg-teal-100 opacity-20 blur-3xl md:h-96 md:w-96"></div>
-        </div>
-      </div>
-      <div className="relative mx-auto max-w-7xl space-y-8 pb-16 pt-12 md:space-y-16 md:pb-24 md:pt-16">
+      <div className="relative mx-auto max-w-7xl space-y-8 py-10">
         <div className="text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 subpixel-antialiased sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 subpixel-antialiased sm:text-3xl md:text-5xl lg:text-4xl xl:text-5xl">
             Drive{" "}
             <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">
               Tangible

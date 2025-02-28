@@ -59,14 +59,14 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <div className="mx-auto max-w-7xl">
         <motion.header
-          className="flex h-screen items-center text-start"
+          className="flex items-center pb-14 pt-32 text-start"
           initial="initial"
           animate="animate"
           variants={fadeIn}
         >
           <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
             <div className="space-y-6">
-              <h1 className="mb-6 text-5xl font-extrabold text-gray-900 sm:text-6xl lg:text-7xl">
+              <h1 className="mb-6 text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
                 About{" "}
                 <span className="bg-gradient-to-r from-dcase to-emerald-600 bg-clip-text text-transparent">
                   DCase
