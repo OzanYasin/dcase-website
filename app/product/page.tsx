@@ -1,566 +1,370 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
 import {
-  InfoIcon as Analytics,
-  ArrowRight,
-  ActivityIcon as Asset,
-  AwardIcon,
-  CheckCircle,
-  CheckCircleIcon,
-  CloudIcon,
-  ContactIcon as Communication,
-  MergeIcon as Integration,
-  ScaleIcon,
-  ServerIcon,
-  ShieldCheckIcon,
-  SlashIcon as SLA,
-  SlidersHorizontalIcon,
-  LayoutTemplateIcon as Template,
-  Workflow,
+  FormInput,
+  GitBranch,
+  BarChart3,
+  AlertCircle,
+  Timer,
+  ShieldCheck,
+  Plug,
 } from "lucide-react";
+import Image from "next/image";
+import { HeroSection } from "./components/hero-section";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-const FeatureIcon = ({ icon }: { icon: string }) => {
-  const IconComponent =
-    {
-      Workflow,
-      Template,
-      Communication,
-      Asset,
-      SLA,
-      Analytics,
-      Integration,
-    }[icon] || Workflow;
-
-  return <IconComponent className="h-8 w-8 text-emerald-600" />;
-};
-
-const SectionWrapper = ({
-  children,
-  className = "",
-  bgClass = "bg-white",
-  id,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  bgClass?: string;
-  id?: string;
-}) => (
-  <motion.section
-    id={id}
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    className={`py-24 ${bgClass} ${className}`}
-  >
-    {children}
-  </motion.section>
-);
-
-export default function ProductOverview() {
+export default function Home() {
   return (
-    <div className="min-h-screen font-sans">
+    <main className="bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <SectionWrapper className="flex min-h-screen items-center justify-center bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-between md:flex-row">
-            <motion.div
-              className="mb-8 w-full text-left md:mb-0 md:w-1/2"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="mb-6 text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
-                Revolutionizing IT Service Management{" "}
-                <br className="hidden md:inline" />
-                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  with DCase
-                </span>
-              </h1>
-              <p className="mb-8 text-lg leading-relaxed text-gray-700 md:text-xl">
-                Explore the features that make DCase the ultimate platform for
-                seamless, scalable, and smart IT operations.
-              </p>
-              <Button className="duration-400 transform rounded-lg bg-dcase px-6 py-2 font-bold text-white transition hover:-translate-y-1 hover:bg-dcase/90">
-                Request a Demo
-              </Button>
-            </motion.div>
-            <motion.div
-              className="w-full md:w-1/2"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <Image
-                src="/placeholder.svg"
-                alt="DCase Platform"
-                width={600}
-                height={400}
-                className="h-auto w-full rounded-lg shadow-xl"
-              />
-            </motion.div>
+      <HeroSection
+        title="Revolutionizing IT Service Management with DCase"
+        description="DCase is more than just an ITSM tool, it’s a comprehensive platform engineered for modern businesses that demand automation, adaptability, and intelligence. Unlike legacy ITSM solutions that struggle with rigid structures and slow adaptation, DCase is a next-generation, modular, and API-driven ITSM platform that brings efficiency, automation, and scalability into one unified system."
+        actions={[
+          {
+            text: "Get Started",
+            href: "/demo",
+            variant: "default",
+          },
+          {
+            text: "Contact Sales",
+            href: "/contact",
+            variant: "glow",
+          },
+        ]}
+        image={{
+          src: "/production-main.png",
+          alt: "Dcase Platform Interface",
+        }}
+      />
+
+      <div className="container mx-auto max-w-6xl px-4 pb-16 pt-0">
+        {/* Features Header */}
+        <section className="mb-24 text-center">
+          <div className="relative inline-block">
+            <h1 className="relative z-10 mb-6 text-5xl font-bold leading-normal md:text-6xl">
+              <span className="inline-block bg-gradient-to-r from-[hsl(32,100%,70%)] to-[hsl(20,100%,65%)] bg-clip-text pb-2 text-transparent">
+                Key Features & Core Capabilities
+              </span>
+            </h1>
           </div>
-        </div>
-      </SectionWrapper>
+          <p className="mx-auto max-w-3xl text-xl font-light leading-relaxed text-gray-600">
+            Empowering IT Teams with Intelligent, Scalable, and Automated
+            Solutions
+          </p>
+        </section>
 
-      {/* What Makes DCase Unique? Section */}
-      <SectionWrapper bgClass="bg-gray-100">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="mb-12 text-center text-4xl font-bold text-gray-900 md:text-5xl"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            What Makes <span className="text-emerald-600">DCase</span> Unique?
-          </motion.h2>
-          <motion.div
-            className="grid gap-8 md:grid-cols-3"
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.2,
-                },
-              },
-            }}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            {[
-              "Streamline service delivery",
-              "Enhance operational efficiency",
-              "Drive impactful business outcomes",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 },
-                }}
-                className="h-full"
-              >
-                <Card className="h-full bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl">
-                  <CardHeader className="text-center">
-                    <motion.div
-                      className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 p-3"
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 20,
-                      }}
-                    >
-                      <CheckCircle className="h-8 w-8 text-emerald-600" />
-                    </motion.div>
-                    <CardTitle className="text-xl font-semibold text-gray-800">
-                      {item}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-center text-gray-600">
-                      {item === "Streamline service delivery"
-                        ? "Optimize your service delivery process with automated workflows and intelligent routing, reducing response times and improving customer satisfaction."
-                        : item === "Enhance operational efficiency"
-                          ? "Maximize resource utilization and minimize bottlenecks through data-driven insights and automated task management."
-                          : "Transform raw data into actionable strategies, enabling informed decision-making and measurable business growth."}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </SectionWrapper>
+        {/* Section 1 */}
+        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="space-y-6">
+            <div className="mb-2 inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100">
+                <FormInput className="h-6 w-6 text-green-600" />
+              </span>
+              <span className="text-sm font-medium uppercase tracking-wider text-green-600">
+                Feature 01
+              </span>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold leading-tight">
+              Dynamic Form & Template Designer
+            </h2>
+            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+              Build ITSM Processes with No-Code Adaptability
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Drag-and-Drop Form Designer: Configure tickets, service requests, and incident forms effortlessly.",
+                "Conditional Fields & Role-Based Visibility: Ensure each team sees only relevant data.",
+                "Dynamic Workflow Triggers: Automate responses based on ticket categories or priorities.",
+                "Versioning & Audit History: Track changes and maintain compliance with historical templates.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-100">
+                    <span className="h-2 w-2 rounded-full bg-green-600"></span>
+                  </span>
+                  <span className="leading-relaxed text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative">
+            <Image
+              src="/feature-01.png"
+              alt="Form Builder Interface"
+              className="h-auto w-full rounded-xl border border-gray-100 shadow-lg"
+              width={800}
+              height={600}
+            />
+          </div>
+        </section>
 
-      {/* Key Features Section */}
-      <SectionWrapper id="features" bgClass="bg-white">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="mb-12 text-center text-4xl font-bold text-gray-900"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Key Features
-          </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1,
-                },
-              },
-            }}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 },
-                }}
-              >
-                <Card className="border-t-4 border-emerald-500 bg-white shadow-md transition-shadow duration-300 hover:shadow-lg">
-                  <CardHeader className="p-6">
-                    <motion.div
-                      className="mb-4 flex items-center"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 10,
-                      }}
-                    >
-                      <div className="mr-4 rounded-full bg-emerald-100 p-2">
-                        <FeatureIcon icon={feature.icon} />
-                      </div>
-                      <CardTitle className="text-xl font-semibold text-gray-800">
-                        {feature.title}
-                      </CardTitle>
-                    </motion.div>
-                  </CardHeader>
-                  <CardContent className="p-6 pt-0">
-                    <CardDescription className="text-gray-600">
-                      {feature.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </SectionWrapper>
+        {/* Section 2 */}
+        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="relative order-2 md:order-1">
+            <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 opacity-70"></div>
+            <Image
+              src="/feature-02.png"
+              alt="Workflow Management Interface"
+              className="h-auto w-full rounded-xl border border-gray-100 shadow-lg"
+              width={800}
+              height={600}
+            />
+          </div>
+          <div className="order-1 space-y-6 md:order-2">
+            <div className="mb-2 inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+                <GitBranch className="h-6 w-6 text-blue-600" />
+              </span>
+              <span className="text-sm font-medium uppercase tracking-wider text-blue-600">
+                Feature 02
+              </span>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold leading-tight">
+              Advanced Workflow Management
+            </h2>
+            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+              Transform IT Operations with Automation
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Pre-Built BPMN Integrations: Seamlessly define automated workflows.",
+                "Rule-Based Execution: Automate routing, approvals, and escalations.",
+                "Event-Driven Triggers: React dynamically to changes in ticket status.",
+                "Custom API Integrations: Extend automation beyond internal workflows.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
+                    <span className="h-2 w-2 rounded-full bg-blue-600"></span>
+                  </span>
+                  <span className="leading-relaxed text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      {/* Why Choose DCase? Section */}
-      <SectionWrapper id="why-choose" bgClass="bg-gray-100">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="mb-12 text-center text-4xl font-bold text-gray-900"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Why Choose DCase?
-          </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1,
-                },
-              },
-            }}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            {[
-              { title: "Scalable", icon: ScaleIcon },
-              { title: "Reliable", icon: ShieldCheckIcon },
-              { title: "Customizable", icon: SlidersHorizontalIcon },
-              { title: "Proven Expertise", icon: AwardIcon },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 },
-                }}
-              >
-                <Card className="bg-white shadow-md transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg">
-                  <CardHeader>
-                    <motion.div
-                      className="mb-4 flex items-center"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 10,
-                      }}
-                    >
-                      <div className="mr-4 rounded-full bg-emerald-100 p-2">
-                        <item.icon className="h-6 w-6 text-emerald-600" />
-                      </div>
-                      <CardTitle className="text-xl font-semibold text-emerald-600">
-                        {item.title}
-                      </CardTitle>
-                    </motion.div>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-gray-600">
-                      {getWhyChooseDescription(item.title)}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </SectionWrapper>
+        {/* Section 3 */}
+        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="space-y-6">
+            <div className="mb-2 inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100">
+                <BarChart3 className="h-6 w-6 text-yellow-600" />
+              </span>
+              <span className="text-sm font-medium uppercase tracking-wider text-yellow-600">
+                Feature 03
+              </span>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold leading-tight">
+              Embedded Advanced Reporting & Analytics
+            </h2>
+            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+              Turn ITSM Data into Actionable Insights
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Custom Dashboard Builder: Visualize service metrics with flexible widgets.",
+                "Trend Analysis & Predictive Insights: Identify performance bottlenecks.",
+                "Scheduled Reporting: Automate delivery of key reports to stakeholders.",
+                "Multi-Level Data Filtering: Drill down into ticket and SLA data instantly.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-yellow-100">
+                    <span className="h-2 w-2 rounded-full bg-yellow-600"></span>
+                  </span>
+                  <span className="leading-relaxed text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-yellow-50 to-orange-50 opacity-70"></div>
+            <Image
+              src="/feature-03.png"
+              alt="Reporting and Analytics Dashboard"
+              className="h-auto w-full rounded-xl border border-gray-100 shadow-lg"
+              width={800}
+              height={600}
+            />
+          </div>
+        </section>
 
-      {/* Deployment Options Section */}
-      <SectionWrapper id="deployment" bgClass="bg-white">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="mb-12 text-center text-4xl font-bold text-gray-900"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Deployment Options
-          </motion.h2>
-          <motion.p
-            className="mx-auto mb-12 max-w-3xl text-center text-xl text-gray-600"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            DCase offers flexibility with both On-Premise and Cloud deployment
-            models:
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Tabs defaultValue="on-premise" className="mx-auto max-w-3xl">
-              <TabsList className="mb-8 grid h-full w-full grid-cols-2 rounded-lg bg-gray-200 p-1">
-                <TabsTrigger
-                  value="on-premise"
-                  className="rounded-md px-6 py-3 text-lg font-semibold transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-emerald-600 data-[state=active]:shadow-md"
-                >
-                  On-Premise
-                </TabsTrigger>
-                <TabsTrigger
-                  value="cloud"
-                  className="rounded-md px-6 py-3 text-lg font-semibold transition-all duration-300 data-[state=active]:bg-white data-[state=active]:text-emerald-600 data-[state=active]:shadow-md"
-                >
-                  Cloud
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="on-premise">
-                <Card className="border-2 border-gray-200 bg-white shadow-lg">
-                  <CardHeader>
-                    <CardTitle className="flex items-center text-2xl text-emerald-600">
-                      <ServerIcon className="mr-2 h-6 w-6" />
-                      On-Premise
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="mb-4 text-lg">
-                      Complete control over data and infrastructure. Ideal for
-                      organizations with specific security requirements or
-                      complex integrations.
-                    </CardDescription>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-gray-700">
-                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                        Full data sovereignty
-                      </li>
-                      <li className="flex items-center text-gray-700">
-                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                        Customizable security measures
-                      </li>
-                      <li className="flex items-center text-gray-700">
-                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                        Integration with existing infrastructure
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="cloud">
-                <Card className="border-2 border-gray-200 bg-white shadow-lg">
-                  <CardHeader>
-                    <CardTitle className="flex items-center text-2xl text-emerald-600">
-                      <CloudIcon className="mr-2 h-6 w-6" />
-                      Cloud
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="mb-4 text-lg">
-                      Fast, cost-effective, and scalable deployment. Perfect for
-                      organizations looking for flexibility and reduced
-                      maintenance overhead.
-                    </CardDescription>
-                    <ul className="space-y-2">
-                      <li className="flex items-center text-gray-700">
-                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                        Rapid deployment and scaling
-                      </li>
-                      <li className="flex items-center text-gray-700">
-                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                        Automatic updates and maintenance
-                      </li>
-                      <li className="flex items-center text-gray-700">
-                        <CheckCircleIcon className="mr-2 h-5 w-5 text-emerald-500" />
-                        Global accessibility and redundancy
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </motion.div>
-          <motion.p
-            className="mt-8 text-center text-lg text-gray-600"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Learn more on our{" "}
-            <a
-              href="/deployment-models"
-              className="font-semibold text-emerald-600 underline transition-colors hover:text-emerald-700"
-            >
-              Deployment Models
-            </a>{" "}
-            page.
-          </motion.p>
-        </div>
-      </SectionWrapper>
+        {/* Section 4 */}
+        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="relative order-2 md:order-1">
+            <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-red-50 to-pink-50 opacity-70"></div>
+            <Image
+              src="/feature-04.png"
+              alt="Incident and Request Management Interface"
+              className="h-auto w-full rounded-xl border border-gray-100 shadow-lg"
+              width={800}
+              height={600}
+            />
+          </div>
+          <div className="order-1 space-y-6 md:order-2">
+            <div className="mb-2 inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-100">
+                <AlertCircle className="h-6 w-6 text-red-600" />
+              </span>
+              <span className="text-sm font-medium uppercase tracking-wider text-red-600">
+                Feature 04
+              </span>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold leading-tight">
+              Incident & Request Management
+            </h2>
+            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+              Fast-Track Issue Resolution with Smart Automation
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Automated Ticket Categorization: Reduce manual effort in ticket triage.",
+                "Real-Time Incident Alerts: Detect and respond to disruptions instantly.",
+                "Root Cause Analysis: Identify patterns behind recurring IT issues.",
+                "Self-Service Portals: Empower users with self-resolution suggestions.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-red-100">
+                    <span className="h-2 w-2 rounded-full bg-red-600"></span>
+                  </span>
+                  <span className="leading-relaxed text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      {/* CTA Section */}
-      <SectionWrapper bgClass="bg-gray-100">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Card className="mx-auto max-w-4xl overflow-hidden rounded-3xl bg-[#0F172A] text-white">
-              <CardContent className="p-12">
-                <h2 className="mb-6 text-center text-4xl font-bold">
-                  <span className="text-emerald-400">Ready to Transform</span>{" "}
-                  Your IT Operations?
-                </h2>
-                <p className="mx-auto mb-8 max-w-2xl text-center text-lg text-gray-300">
-                  Explore the power of DCase with a personalized demo tailored
-                  to your organization.
-                </p>
-                <div className="flex justify-center gap-4">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      size="lg"
-                      className="rounded-xl bg-emerald-500 px-8 py-6 text-lg font-semibold text-white hover:bg-emerald-600"
-                    >
-                      Get Started Now
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="rounded-xl border-emerald-500 px-8 py-6 text-lg font-semibold text-emerald-500 hover:bg-white/90 hover:text-emerald-500"
-                    >
-                      Request Demo
-                    </Button>
-                  </motion.div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </SectionWrapper>
-    </div>
+        {/* Section 5 */}
+        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="space-y-6">
+            <div className="mb-2 inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
+                <Timer className="h-6 w-6 text-purple-600" />
+              </span>
+              <span className="text-sm font-medium uppercase tracking-wider text-purple-600">
+                Feature 05
+              </span>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold leading-tight">
+              SLA & OLA Management
+            </h2>
+            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+              Ensure Service Continuity with Automated Monitoring
+            </p>
+            <ul className="space-y-4">
+              {[
+                "SLA Templates & Time-Based Rules: Automate SLA tracking and breach escalation.",
+                "Auto-Triggered Notifications: Alert teams before deadlines are missed.",
+                "Escalation Workflows: Redirect unresolved issues automatically.",
+                "Compliance Dashboards: Visualize SLA adherence in real time.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-purple-100">
+                    <span className="h-2 w-2 rounded-full bg-purple-600"></span>
+                  </span>
+                  <span className="leading-relaxed text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-purple-50 to-indigo-50 opacity-70"></div>
+            <Image
+              src="/feature-05.png"
+              alt="SLA & OLA Management Interface"
+              className="h-auto w-full rounded-xl border border-gray-100 shadow-lg"
+              width={800}
+              height={600}
+            />
+          </div>
+        </section>
+
+        {/* Section 6 */}
+        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="relative order-2 md:order-1">
+            <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-indigo-50 to-blue-50 opacity-70"></div>
+            <Image
+              src="/feature-06.png"
+              alt="Role and Permission Configuration Interface"
+              className="h-auto w-full rounded-xl border border-gray-100 shadow-lg"
+              width={800}
+              height={600}
+            />
+          </div>
+          <div className="order-1 space-y-6 md:order-2">
+            <div className="mb-2 inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100">
+                <ShieldCheck className="h-6 w-6 text-indigo-600" />
+              </span>
+              <span className="text-sm font-medium uppercase tracking-wider text-indigo-600">
+                Feature 06
+              </span>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold leading-tight">
+              Role-Based Access & Security Management
+            </h2>
+            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+              Granular Control for Enterprise-Scale Operations
+            </p>
+            <ul className="space-y-4">
+              {[
+                "Multi-Tenant Isolation: Securely manage multiple organizations from a single platform.",
+                "Token-Based API Authentication: Ensure secure external integrations.",
+                "RBAC with Fine-Tuned Permissions: Assign feature-level access by role.",
+                "Audit Logging & Monitoring: Maintain complete visibility into user activity.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100">
+                    <span className="h-2 w-2 rounded-full bg-indigo-600"></span>
+                  </span>
+                  <span className="leading-relaxed text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Section 7 */}
+        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="space-y-6">
+            <div className="mb-2 inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100">
+                <Plug className="h-6 w-6 text-teal-600" />
+              </span>
+              <span className="text-sm font-medium uppercase tracking-wider text-teal-600">
+                Feature 07
+              </span>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold leading-tight">
+              Seamless API-Driven Integrations
+            </h2>
+            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+              Extend & Connect with Enterprise IT Ecosystems
+            </p>
+            <ul className="space-y-4">
+              {[
+                "REST API with Full Capabilities: Enable two-way data sync.",
+                "Pre-Built Connectors for CRM & ERP: Streamline data flow between enterprise apps.",
+                "Webhooks & Event Subscriptions (Upcoming): Trigger external actions in real time.",
+                "Marketplace Expansion (Upcoming): Future roadmap includes third-party plugin integration.",
+              ].map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-teal-100">
+                    <span className="h-2 w-2 rounded-full bg-teal-600"></span>
+                  </span>
+                  <span className="leading-relaxed text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-teal-50 to-green-50 opacity-70"></div>
+            <Image
+              src="/feature-07.png"
+              alt="API-Driven Integrations Interface"
+              className="h-auto w-full rounded-xl border border-gray-100 shadow-lg"
+              width={800}
+              height={600}
+            />
+          </div>
+        </section>
+      </div>
+    </main>
   );
-}
-
-const features = [
-  {
-    title: "Advanced Workflow Management",
-    description:
-      "Orchestrate and optimize complex processes with Camunda Engine integration, BPMN process engine, event-driven automation, and more.",
-    icon: "Workflow",
-  },
-  {
-    title: "Dynamic Template Designer",
-    description:
-      "Revolutionize customization with an innovative model builder, drag-and-drop simplicity, and granular role-based controls.",
-    icon: "Template",
-  },
-  {
-    title: "Intelligent Communication Modules",
-    description:
-      "Turn conversations into actionable outcomes with email-to-ticket, IVR-to-ticket, and multi-channel support.",
-    icon: "Communication",
-  },
-  {
-    title: "Unified IT Asset and Configuration Management",
-    description:
-      "Gain complete visibility and control over your IT infrastructure with centralized asset inventory and integrated CMDB.",
-    icon: "Asset",
-  },
-  {
-    title: "SLA/OLA Excellence Management",
-    description:
-      "Ensure compliance and exceed expectations with customizable SLA templates and automated escalation.",
-    icon: "SLA",
-  },
-  {
-    title: "Advanced Reporting and Analytics",
-    description:
-      "Turn data into actionable insights with real-time dashboards, custom reporting, and trend analysis.",
-    icon: "Analytics",
-  },
-  {
-    title: "Integration Capabilities",
-    description:
-      "Seamlessly unify your IT ecosystem with third-party integrations, custom API support, and unified data exchange.",
-    icon: "Integration",
-  },
-];
-
-function getWhyChooseDescription(item: string) {
-  switch (item) {
-    case "Scalable":
-      return "Grows with your business needs, ensuring long-term value and adaptability.";
-    case "Reliable":
-      return "Built for high availability and minimal downtime, keeping your operations running smoothly.";
-    case "Customizable":
-      return "Tailored to your organization's unique requirements, providing a perfect fit for your processes.";
-    case "Proven Expertise":
-      return "Backed by decades of ITSM experience, ensuring you're partnering with industry leaders.";
-    default:
-      return "";
-  }
 }

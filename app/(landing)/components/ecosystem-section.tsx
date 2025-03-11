@@ -107,6 +107,7 @@ export default function EcosystemSection() {
               layout="fill"
               objectFit="cover"
               className="transition-all duration-300 hover:brightness-105"
+              unoptimized
             />
           </motion.div>
           <motion.p
