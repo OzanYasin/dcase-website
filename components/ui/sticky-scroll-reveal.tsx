@@ -11,12 +11,12 @@ export const StickyScroll = ({
   content: {
     title: string;
     description: string;
-    content?: React.ReactNode | any;
+    content?: React.ReactNode | JSX.Element | null | undefined;
   }[];
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
     // target: ref
@@ -35,7 +35,7 @@ export const StickyScroll = ({
         }
         return acc;
       },
-      0
+      0,
     );
     setActiveCard(closestBreakpointIndex);
   });
@@ -52,11 +52,12 @@ export const StickyScroll = ({
   ];
 
   const [backgroundGradient, setBackgroundGradient] = useState(
-    linearGradients[0]
+    linearGradients[0],
   );
 
   useEffect(() => {
     setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCard]);
 
   return (
@@ -64,7 +65,7 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10"
+      className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10"
       ref={ref}
     >
       <div className="div relative flex items-start px-4">
@@ -89,7 +90,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-kg text-slate-300 max-w-sm mt-10"
+                className="text-kg mt-10 max-w-sm text-slate-300"
               >
                 {item.description}
               </motion.p>
@@ -101,8 +102,8 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
-          contentClassName
+          "sticky top-10 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
+          contentClassName,
         )}
       >
         {content[activeCard].content ?? null}
