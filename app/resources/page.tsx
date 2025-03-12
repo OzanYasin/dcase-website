@@ -17,32 +17,18 @@ import IndustryCard from "./components/industry-card";
 
 const industries = [
   {
-    name: "Education",
-    icon: Book,
+    name: "Telecommunications, Media, and Technology",
+    icon: Smartphone,
     challenge:
-      "Educational institutions face a growing demand for seamless IT services to support online learning, campus management, and research activities. Common issues include slow ticket resolution, disconnected systems, and increasing cybersecurity threats.",
+      "These industries demand highly available IT systems to support rapid innovation and customer engagement.",
     solution: [
-      "Centralized ITSM platform for managing faculty, student, and administrative requests.",
-      "Automated workflows to streamline ticket handling for classroom technology, LMS (Learning Management System) issues, and research equipment.",
-      "Robust data protection to safeguard sensitive student and institutional data.",
-      "Proactive monitoring of IT assets across campuses to minimize downtime and disruptions.",
+      "ITSM systems for managing large-scale customer support operations.",
+      "Automation for faster issue resolution in telecom and media platforms.",
+      "Real-time monitoring to ensure uptime for streaming and communication services.",
+      "Analytics-driven insights for enhancing product and service delivery.",
     ],
     impact:
-      "Enhanced student and faculty satisfaction, improved resource allocation, and a robust IT infrastructure that scales with the institution's growth.",
-  },
-  {
-    name: "Energy and Utilities",
-    icon: Zap,
-    challenge:
-      "Energy and utility providers need resilient IT systems to ensure uninterrupted operations, especially in mission-critical environments like power plants and distribution networks.",
-    solution: [
-      "Predictive maintenance through real-time monitoring of IT assets and field equipment.",
-      "Incident management frameworks to address outages or system failures swiftly.",
-      "SLA tracking to ensure consistent service delivery for internal teams and external customers.",
-      "Comprehensive IT asset management to monitor and manage remote field systems.",
-    ],
-    impact:
-      "Reduced outages, optimized field operations, and ensured compliance with energy sector regulations.",
+      "Improved customer retention, faster time-to-market, and a competitive edge in a fast-evolving market.",
   },
   {
     name: "Financial Services",
@@ -73,6 +59,20 @@ const industries = [
       "Improved service delivery, faster resolution of citizen requests, and a robust, secure IT framework for public operations.",
   },
   {
+    name: "Service Providers",
+    icon: HeadphonesIcon,
+    challenge:
+      "Service providers face high volumes of customer requests and demand scalable ITSM systems to meet expectations.",
+    solution: [
+      "Scalable ITSM frameworks for managing customer-facing IT support portals.",
+      "Real-time SLA tracking to maintain service levels across diverse contracts.",
+      "Automated ticket routing to streamline request handling.",
+      "Data analytics for improved resource allocation and customer satisfaction.",
+    ],
+    impact:
+      "Enhanced service delivery, optimized resource utilization, and improved client retention.",
+  },
+  {
     name: "Healthcare",
     icon: Heart,
     challenge:
@@ -101,6 +101,34 @@ const industries = [
       "Increased production efficiency, reduced operational downtime, and a resilient IT ecosystem.",
   },
   {
+    name: "Education",
+    icon: Book,
+    challenge:
+      "Educational institutions face a growing demand for seamless IT services to support online learning, campus management, and research activities. Common issues include slow ticket resolution, disconnected systems, and increasing cybersecurity threats.",
+    solution: [
+      "Centralized ITSM platform for managing faculty, student, and administrative requests.",
+      "Automated workflows to streamline ticket handling for classroom technology, LMS (Learning Management System) issues, and research equipment.",
+      "Robust data protection to safeguard sensitive student and institutional data.",
+      "Proactive monitoring of IT assets across campuses to minimize downtime and disruptions.",
+    ],
+    impact:
+      "Enhanced student and faculty satisfaction, improved resource allocation, and a robust IT infrastructure that scales with the institution's growth.",
+  },
+  {
+    name: "Energy and Utilities",
+    icon: Zap,
+    challenge:
+      "Energy and utility providers need resilient IT systems to ensure uninterrupted operations, especially in mission-critical environments like power plants and distribution networks.",
+    solution: [
+      "Predictive maintenance through real-time monitoring of IT assets and field equipment.",
+      "Incident management frameworks to address outages or system failures swiftly.",
+      "SLA tracking to ensure consistent service delivery for internal teams and external customers.",
+      "Comprehensive IT asset management to monitor and manage remote field systems.",
+    ],
+    impact:
+      "Reduced outages, optimized field operations, and ensured compliance with energy sector regulations.",
+  },
+  {
     name: "Nonprofit",
     icon: HeartOutline,
     challenge:
@@ -127,34 +155,6 @@ const industries = [
     ],
     impact:
       "Increased sales, enhanced customer satisfaction, and optimized IT resource allocation.",
-  },
-  {
-    name: "Service Providers",
-    icon: HeadphonesIcon,
-    challenge:
-      "Service providers face high volumes of customer requests and demand scalable ITSM systems to meet expectations.",
-    solution: [
-      "Scalable ITSM frameworks for managing customer-facing IT support portals.",
-      "Real-time SLA tracking to maintain service levels across diverse contracts.",
-      "Automated ticket routing to streamline request handling.",
-      "Data analytics for improved resource allocation and customer satisfaction.",
-    ],
-    impact:
-      "Enhanced service delivery, optimized resource utilization, and improved client retention.",
-  },
-  {
-    name: "Telecommunications, Media, and Technology",
-    icon: Smartphone,
-    challenge:
-      "These industries demand highly available IT systems to support rapid innovation and customer engagement.",
-    solution: [
-      "ITSM systems for managing large-scale customer support operations.",
-      "Automation for faster issue resolution in telecom and media platforms.",
-      "Real-time monitoring to ensure uptime for streaming and communication services.",
-      "Analytics-driven insights for enhancing product and service delivery.",
-    ],
-    impact:
-      "Improved customer retention, faster time-to-market, and a competitive edge in a fast-evolving market.",
   },
   {
     name: "Transportation and Logistics",
