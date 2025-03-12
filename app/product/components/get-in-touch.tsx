@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 
-export default function SolutionsGetInTouchSection() {
+export default function ProductGetInTouchSection() {
   // Define the fadeIn animation variant
   const fadeIn = {
     initial: { opacity: 0, y: 40 },
@@ -54,43 +55,105 @@ export default function SolutionsGetInTouchSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              Explore Further
+            <h2 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-6xl md:text-7xl">
+              The Next-Gen ITSM
             </h2>
-            <p className="mt-5 text-2xl font-semibold tracking-tight text-emerald-700 sm:text-3xl md:text-4xl">
-              Schedule Your Personalized Demo
+            <p className="mt-2 text-2xl font-semibold tracking-tight text-orange-500 sm:text-3xl md:text-4xl">
+              Seamless, Scalable, and Smart Operations
             </p>
-            <motion.span
-              className="absolute -bottom-3 left-0 h-1 w-full rounded bg-emerald-500"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            ></motion.span>
           </motion.div>
           <motion.p
-            className="mx-auto mb-8 mt-3 max-w-2xl text-start text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl"
+            className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Discover the transformative power of DCase ITSM for your
-            organization. Our experts are ready to provide a tailored
-            demonstration that showcases how our solution can{" "}
-            <span className="font-medium text-emerald-700">
-              redefine your IT operations
+            DCase is designed for organizations looking to optimize IT service
+            management through
+            <span className="font-medium text-orange-500">
+              {" "}
+              automation, flexibility, and deep analytics
             </span>
-            , boost efficiency, and drive measurable business success.
+            . Its modern architecture and enterprise-grade scalability ensure
+            that businesses of all sizes can enhance efficiency, minimize
+            downtime, and improve IT service outcomes.
           </motion.p>
+
+          <motion.div
+            className="mx-auto mb-10 max-w-2xl text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <ul className="space-y-3 text-base sm:text-lg md:text-xl">
+              <motion.li
+                className="flex items-start gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+              >
+                <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-100">
+                  <Check className="h-3.5 w-3.5 text-orange-600" />
+                </span>
+                <span className="text-gray-700">
+                  Streamline operations with fully customizable workflows and
+                  automation
+                </span>
+              </motion.li>
+              <motion.li
+                className="flex items-start gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.7 }}
+              >
+                <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-100">
+                  <Check className="h-3.5 w-3.5 text-orange-600" />
+                </span>
+                <span className="text-gray-700">
+                  Ensure SLA compliance with dynamic tracking and escalation
+                  mechanisms
+                </span>
+              </motion.li>
+              <motion.li
+                className="flex items-start gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.8 }}
+              >
+                <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-100">
+                  <Check className="h-3.5 w-3.5 text-orange-600" />
+                </span>
+                <span className="text-gray-700">
+                  Gain deep insights with embedded real-time analytics and
+                  dashboards
+                </span>
+              </motion.li>
+              <motion.li
+                className="flex items-start gap-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.9 }}
+              >
+                <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-100">
+                  <Check className="h-3.5 w-3.5 text-orange-600" />
+                </span>
+                <span className="text-gray-700">
+                  Secure and scale ITSM with robust access control and API
+                  integrations
+                </span>
+              </motion.li>
+            </ul>
+          </motion.div>
 
           <motion.div
             className="inline-block"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
           >
             <Button className="group relative overflow-hidden rounded-full bg-emerald-600 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-emerald-700 hover:shadow-lg">
               <Link href="/contact-us" className="relative z-10">
-                Request a Demo
+                Explore DCase ITSM
               </Link>
               <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
             </Button>

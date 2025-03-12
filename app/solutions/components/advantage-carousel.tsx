@@ -71,7 +71,7 @@ export default function DcaseCarousel() {
     if (isMobile || !carouselRef.current) return;
 
     const carousel = carouselRef.current;
-    const speed = 0.15;
+    const speed = 0.5; // Adjust speed as needed
     let animationFrameId: number;
 
     const animate = () => {

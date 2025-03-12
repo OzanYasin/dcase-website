@@ -6,6 +6,7 @@ import React from "react";
 // import dynamic from "next/dynamic";
 import Image from "next/image";
 import { FlipWords } from "@/components/ui/flip-words";
+import Link from "next/link";
 
 // const HeroModel = dynamic(() => import("./hero-model"), { ssr: false });
 
@@ -34,7 +35,7 @@ const HeroSection: React.FC = () => {
             </div>
             <div>
               <button className="duration-400 transform rounded-lg bg-dcase px-6 py-2 font-bold text-white transition hover:-translate-y-1">
-                See DCase in Action
+                <Link href="/request-demo">See DCase in Action</Link>
               </button>
             </div>
           </div>

@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
@@ -14,22 +13,23 @@ export default function TestimonialSection() {
           <Card className="flex-1 border-0 shadow-none">
             <CardContent className="space-y-4 p-0 sm:space-y-6">
               <blockquote className="text-lg leading-relaxed sm:text-xl md:text-2xl">
-                &ldquo;DCase radically streamlined our ticket handling
-                processes, leading to quicker resolutions and happier
-                stakeholders.&rdquo;
+                &ldquo;Partnering with DCase has profoundly enhanced our IT
+                operations. The remarkable efficiency improvements and
+                transparency in service management have exceeded our
+                expectations.&rdquo;
               </blockquote>
 
               <div className="flex items-center gap-3 sm:gap-4">
-                <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
+                {/* <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
                   <AvatarImage src="/placeholder.svg" alt="John Doe" />
-                  <AvatarFallback>JD</AvatarFallback>
-                </Avatar>
+                  <AvatarFallback>LT</AvatarFallback>
+                </Avatar> */}
                 <div>
                   <div className="text-sm font-semibold sm:text-base">
-                    John Doe
+                    L. Thompson
                   </div>
                   <div className="text-xs text-gray-500 sm:text-sm">
-                    CIO at FutureTech
+                    Chief Information Officer – Finance
                   </div>
                 </div>
               </div>
@@ -45,21 +45,23 @@ export default function TestimonialSection() {
           <Card className="flex-1 border-0 shadow-none">
             <CardContent className="space-y-4 p-0 sm:space-y-6">
               <blockquote className="text-lg leading-relaxed sm:text-xl md:text-2xl">
-                &ldquo;The customizable templates and automated workflows gave
-                us unprecedented agility.&rdquo;
+                &ldquo;Implementing DCase&apos;s solutions has completely
+                redefined our operations. Our team now functions with heightened
+                precision and agility, consistently delivering exceptional
+                customer satisfaction.&rdquo;
               </blockquote>
 
               <div className="flex items-center gap-3 sm:gap-4">
-                <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
+                {/* <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
                   <AvatarImage src="/placeholder.svg" alt="Jane Smith" />
                   <AvatarFallback>JS</AvatarFallback>
-                </Avatar>
+                </Avatar> */}
                 <div>
                   <div className="text-sm font-semibold sm:text-base">
-                    Jane Smith
+                    Z. Cetintas
                   </div>
                   <div className="text-xs text-gray-500 sm:text-sm">
-                    Head of Operations at GlobalNet
+                    Director of Operations – Telco
                   </div>
                 </div>
               </div>

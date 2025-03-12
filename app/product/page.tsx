@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { HeroSection } from "./components/hero-section";
+import ProductGetInTouchSection from "./components/get-in-touch";
 
 export default function Home() {
   return (
@@ -19,14 +20,14 @@ export default function Home() {
         description="DCase is more than just an ITSM tool, it’s a comprehensive platform engineered for modern businesses that demand automation, adaptability, and intelligence. Unlike legacy ITSM solutions that struggle with rigid structures and slow adaptation, DCase is a next-generation, modular, and API-driven ITSM platform that brings efficiency, automation, and scalability into one unified system."
         actions={[
           {
-            text: "Get Started",
-            href: "/demo",
+            text: "Start Your Transformation",
+            href: "/request-demo",
             variant: "default",
           },
           {
-            text: "Contact Sales",
-            href: "/contact",
-            variant: "glow",
+            text: "Get in Touch With Our Team",
+            href: "/contact-us",
+            variant: "outline",
           },
         ]}
         image={{
@@ -35,7 +36,7 @@ export default function Home() {
         }}
       />
 
-      <div className="container mx-auto max-w-6xl px-4 pb-16 pt-0">
+      <div className="container mx-auto max-w-6xl px-4 pt-0">
         {/* Features Header */}
         <section className="mb-24 text-center">
           <div className="relative inline-block">
@@ -321,7 +322,7 @@ export default function Home() {
         </section>
 
         {/* Section 7 */}
-        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-48 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
           <div className="space-y-6">
             <div className="mb-2 inline-flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100">
@@ -365,6 +366,7 @@ export default function Home() {
           </div>
         </section>
       </div>
+      <ProductGetInTouchSection />
     </main>
   );
 }

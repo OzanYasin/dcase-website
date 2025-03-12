@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -50,27 +51,31 @@ export default function HeroSection() {
                 <Button
                   size="lg"
                   className="group relative w-full overflow-hidden bg-dcase text-white transition-all duration-200 hover:bg-dcase/90 sm:w-auto"
+                  asChild
                 >
-                  <motion.span
-                    className="relative z-10 flex items-center"
-                    variants={{
-                      rest: { x: 0 },
-                      hover: { x: 5 },
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    Start Your ITSM Transformation
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </motion.span>
+                  <Link href="/contact-us">
+                    <motion.span
+                      className="relative z-10 flex items-center"
+                      variants={{
+                        rest: { x: 0 },
+                        hover: { x: 5 },
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      Start Your ITSM Transformation
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </motion.span>
+                  </Link>
                 </Button>
               </motion.div>
             </motion.div>
             <Button
+              asChild
               variant="outline"
               size="lg"
               className="w-full border-white bg-transparent text-white transition-all duration-200 hover:bg-white hover:text-gray-900 sm:w-auto"
             >
-              Schedule a Personalized Demo
+              <Link href="/request-demo">Schedule a Personalized Demo</Link>
             </Button>
           </div>
         </div>

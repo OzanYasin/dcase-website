@@ -7,9 +7,9 @@ import SolutionRoadmapTimeline from "./components/solution-roadmap";
 
 export default function DCaseWebsite() {
   return (
-    <div className="to-gray-100py-24 min-h-screen bg-gradient-to-br from-gray-50 via-white sm:py-32">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="mb-8 text-center text-5xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl pt-16">
+        <h1 className="mb-8 text-center text-3xl font-semibold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-7xl">
           Empower Your IT Landscape with{" "}
           <span className="text-dcase">DCase</span> ITSM Solutions
         </h1>
