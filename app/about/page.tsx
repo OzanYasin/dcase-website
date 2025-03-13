@@ -57,27 +57,27 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-3 mt-8 max-w-7xl md:mx-auto">
         <motion.header
-          className="flex items-center pb-14 pt-32 text-start"
+          className="flex items-center px-4 pb-8 pt-16 text-start sm:px-6 sm:pb-10 sm:pt-20 md:pb-12 md:pt-24 lg:pb-14 lg:pt-32"
           initial="initial"
           animate="animate"
           variants={fadeIn}
         >
-          <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
-            <div className="space-y-6">
-              <h1 className="mb-6 text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
+          <div className="grid w-full gap-8 sm:gap-10 md:grid-cols-2 md:items-center md:gap-12 lg:gap-16">
+            <div className="space-y-4 sm:space-y-5 md:space-y-6">
+              <h1 className="mb-4 text-3xl font-extrabold text-gray-900 sm:mb-5 sm:text-4xl md:mb-6 lg:text-5xl xl:text-6xl">
                 About{" "}
                 <span className="bg-gradient-to-r from-dcase to-emerald-600 bg-clip-text text-transparent">
                   DCase
                 </span>
               </h1>
-              <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight text-gray-700 first:mt-0">
+              <h2 className="scroll-m-20 text-xl font-semibold tracking-tight text-gray-700 first:mt-0 sm:text-2xl md:text-2xl lg:text-3xl">
                 Revolutionizing IT Service Management with over 25 years of
                 collective experience
               </h2>
             </div>
-            <div className="relative h-[400px] w-full overflow-hidden rounded-2xl shadow-xl ring-1 ring-gray-200">
+            <div className="relative mx-auto h-[250px] w-full max-w-md overflow-hidden rounded-xl shadow-xl ring-1 ring-gray-200 sm:h-[300px] sm:rounded-2xl md:h-[350px] md:max-w-none lg:h-[400px]">
               <Image
                 src="/auh.png"
                 alt="DCase team member"

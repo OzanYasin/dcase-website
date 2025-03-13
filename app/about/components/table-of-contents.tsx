@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 
 interface TableOfContentsProps {
   activeSection: string;
@@ -9,6 +10,29 @@ export function TableOfContents({
   activeSection,
   setActiveSection,
 }: TableOfContentsProps) {
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      // Tailwind lg breakpoint is typically 1024px
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    // Check on initial render
+    checkScreenSize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkScreenSize);
+
+    // Clean up
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  // Return null if screen size is smaller than lg breakpoint
+  if (!isLargeScreen) {
+    return null;
+  }
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -45,7 +69,7 @@ export function TableOfContents({
   ];
 
   return (
-    <nav className="to-dcase-secondary/10 sticky top-[15%] h-screen w-96 border-r border-gray-100 bg-gradient-to-b from-white p-12">
+    <nav className="sticky top-[15%] h-screen w-96 border-r border-gray-100 bg-gradient-to-b from-white to-dcase-secondary/10 p-12">
       <div className="space-y-1">
         {sections.map((section) => (
           <div

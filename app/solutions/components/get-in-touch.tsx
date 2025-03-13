@@ -54,10 +54,10 @@ export default function SolutionsGetInTouchSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl md:text-4xl">
               Explore Further
             </h2>
-            <p className="mt-5 text-2xl font-semibold tracking-tight text-emerald-700 sm:text-3xl md:text-4xl">
+            <p className="mt-5 text-xl font-semibold tracking-tight text-emerald-700 sm:text-2xl md:text-3xl">
               Schedule Your Personalized Demo
             </p>
             <motion.span
@@ -68,7 +68,7 @@ export default function SolutionsGetInTouchSection() {
             ></motion.span>
           </motion.div>
           <motion.p
-            className="mx-auto mb-8 mt-3 max-w-2xl text-start text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl"
+            className="mx-auto mb-8 mt-3 max-w-2xl text-start text-base leading-relaxed text-gray-600 md:text-lg lg:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -88,8 +88,11 @@ export default function SolutionsGetInTouchSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <Button className="group relative overflow-hidden rounded-full bg-emerald-600 px-8 py-4 text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-emerald-700 hover:shadow-lg">
-              <Link href="/contact-us" className="relative z-10">
+            <Button className="group relative overflow-hidden rounded-full bg-emerald-600 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-emerald-700 hover:shadow-lg sm:text-xl md:text-2xl">
+              <Link
+                href="/contact-us"
+                className="relative z-10 text-base sm:text-lg md:text-xl"
+              >
                 Request a Demo
               </Link>
               <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>

@@ -105,9 +105,12 @@ export default function ContactPage() {
                 </div>
                 <div className="group flex items-center space-x-4">
                   <div className="rounded-full bg-white p-3 shadow-md transition-all duration-300 group-hover:bg-[hsl(160.1,84.1%,39.4%)]">
-                    <Phone className="h-6 w-6 text-[hsl(160.1,84.1%,39.4%)] transition-all duration-300 group-hover:text-white" />
+                    <Globe className="h-6 w-6 text-[hsl(160.1,84.1%,39.4%)] transition-all duration-300 group-hover:text-white" />
                   </div>
-                  <p className="text-gray-600">[XXX...]</p>
+                  <div>
+                    <p className="font-medium text-gray-900">Regional Office</p>
+                    <p className="text-gray-600">Istanbul, Turkey</p>
+                  </div>
                 </div>
                 <div className="group flex items-center space-x-4">
                   <div className="rounded-full bg-white p-3 shadow-md transition-all duration-300 group-hover:bg-[hsl(160.1,84.1%,39.4%)]">
@@ -117,11 +120,13 @@ export default function ContactPage() {
                 </div>
                 <div className="group flex items-center space-x-4">
                   <div className="rounded-full bg-white p-3 shadow-md transition-all duration-300 group-hover:bg-[hsl(160.1,84.1%,39.4%)]">
-                    <Globe className="h-6 w-6 text-[hsl(160.1,84.1%,39.4%)] transition-all duration-300 group-hover:text-white" />
+                    <Phone className="h-6 w-6 text-[hsl(160.1,84.1%,39.4%)] transition-all duration-300 group-hover:text-white" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">Regional Office</p>
-                    <p className="text-gray-600">Istanbul, Turkey</p>
+                    <p className="font-medium text-gray-900">
+                      Customer Support
+                    </p>
+                    <p className="text-gray-600">+902164554410</p>
                   </div>
                 </div>
               </div>

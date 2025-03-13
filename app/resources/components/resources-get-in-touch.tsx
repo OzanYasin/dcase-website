@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
-export default function ProductGetInTouchSection() {
+export default function ResourcesGetInTouchSection() {
   // Define the fadeIn animation variant
   const fadeIn = {
     initial: { opacity: 0, y: 40 },
@@ -20,7 +20,7 @@ export default function ProductGetInTouchSection() {
   };
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto mt-12 md:mt-24">
       <motion.section
         className="relative mb-12 overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 p-8 text-center shadow-2xl sm:p-12 md:p-16"
         variants={fadeIn}

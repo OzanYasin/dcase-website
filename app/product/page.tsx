@@ -36,24 +36,22 @@ export default function Home() {
         }}
       />
 
-      <div className="container mx-auto max-w-6xl px-4 pt-0">
+      <div className="container mx-auto max-w-6xl px-4 pt-8">
         {/* Features Header */}
-        <section className="mb-24 text-center">
-          <div className="relative inline-block">
-            <h1 className="relative z-10 mb-6 text-5xl font-bold leading-normal md:text-6xl">
-              <span className="inline-block bg-gradient-to-r from-[hsl(32,100%,70%)] to-[hsl(20,100%,65%)] bg-clip-text pb-2 text-transparent">
-                Key Features & Core Capabilities
-              </span>
-            </h1>
-          </div>
-          <p className="mx-auto max-w-3xl text-xl font-light leading-relaxed text-gray-600">
+        <section className="mb-10 text-center md:mb-24">
+          <h1 className="lg:5xl relative z-10 mb-6 text-2xl font-bold leading-normal sm:text-3xl md:text-4xl">
+            <span className="inline-block bg-gradient-to-r from-[hsl(32,100%,70%)] to-[hsl(20,100%,65%)] bg-clip-text text-transparent">
+              Key Features & Core Capabilities
+            </span>
+          </h1>
+          <p className="mx-auto max-w-3xl text-xl font-light leading-relaxed text-gray-600 sm:text-2xl md:text-3xl">
             Empowering IT Teams with Intelligent, Scalable, and Automated
             Solutions
           </p>
         </section>
 
         {/* Section 1 */}
-        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-12 grid grid-cols-1 items-center gap-12 sm:mb-24 md:grid-cols-2 lg:mb-32">
           <div className="space-y-6">
             <div className="mb-2 inline-flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100">
@@ -63,10 +61,10 @@ export default function Home() {
                 Feature 01
               </span>
             </div>
-            <h2 className="mb-3 text-3xl font-bold leading-tight">
+            <h2 className="mb-3 text-xl font-bold leading-tight sm:text-2xl md:text-3xl">
               Dynamic Form & Template Designer
             </h2>
-            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+            <p className="mb-6 text-lg font-medium leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               Build ITSM Processes with No-Code Adaptability
             </p>
             <ul className="space-y-4">
@@ -97,7 +95,7 @@ export default function Home() {
         </section>
 
         {/* Section 2 */}
-        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-12 grid grid-cols-1 items-center gap-12 sm:mb-24 md:grid-cols-2 lg:mb-32">
           <div className="relative order-2 md:order-1">
             <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 opacity-70"></div>
             <Image
@@ -117,10 +115,10 @@ export default function Home() {
                 Feature 02
               </span>
             </div>
-            <h2 className="mb-3 text-3xl font-bold leading-tight">
+            <h2 className="mb-3 text-xl font-bold leading-tight sm:text-2xl md:text-3xl">
               Advanced Workflow Management
             </h2>
-            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+            <p className="mb-6 text-lg font-medium leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               Transform IT Operations with Automation
             </p>
             <ul className="space-y-4">
@@ -142,7 +140,7 @@ export default function Home() {
         </section>
 
         {/* Section 3 */}
-        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-12 grid grid-cols-1 items-center gap-12 sm:mb-24 md:grid-cols-2 lg:mb-32">
           <div className="space-y-6">
             <div className="mb-2 inline-flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100">
@@ -152,10 +150,10 @@ export default function Home() {
                 Feature 03
               </span>
             </div>
-            <h2 className="mb-3 text-3xl font-bold leading-tight">
+            <h2 className="mb-3 text-xl font-bold leading-tight sm:text-2xl md:text-3xl">
               Embedded Advanced Reporting & Analytics
             </h2>
-            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+            <p className="mb-6 text-lg font-medium leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               Turn ITSM Data into Actionable Insights
             </p>
             <ul className="space-y-4">
@@ -187,7 +185,7 @@ export default function Home() {
         </section>
 
         {/* Section 4 */}
-        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-12 grid grid-cols-1 items-center gap-12 sm:mb-24 md:grid-cols-2 lg:mb-32">
           <div className="relative order-2 md:order-1">
             <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-red-50 to-pink-50 opacity-70"></div>
             <Image
@@ -207,10 +205,10 @@ export default function Home() {
                 Feature 04
               </span>
             </div>
-            <h2 className="mb-3 text-3xl font-bold leading-tight">
+            <h2 className="mb-3 text-xl font-bold leading-tight sm:text-2xl md:text-3xl">
               Incident & Request Management
             </h2>
-            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+            <p className="mb-6 text-lg font-medium leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               Fast-Track Issue Resolution with Smart Automation
             </p>
             <ul className="space-y-4">
@@ -232,7 +230,7 @@ export default function Home() {
         </section>
 
         {/* Section 5 */}
-        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-12 grid grid-cols-1 items-center gap-12 sm:mb-24 md:grid-cols-2 lg:mb-32">
           <div className="space-y-6">
             <div className="mb-2 inline-flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
@@ -242,10 +240,10 @@ export default function Home() {
                 Feature 05
               </span>
             </div>
-            <h2 className="mb-3 text-3xl font-bold leading-tight">
+            <h2 className="mb-3 text-xl font-bold leading-tight sm:text-2xl md:text-3xl">
               SLA & OLA Management
             </h2>
-            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+            <p className="mb-6 text-lg font-medium leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               Ensure Service Continuity with Automated Monitoring
             </p>
             <ul className="space-y-4">
@@ -277,7 +275,7 @@ export default function Home() {
         </section>
 
         {/* Section 6 */}
-        <section className="mb-32 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-12 grid grid-cols-1 items-center gap-12 sm:mb-24 md:grid-cols-2 lg:mb-32">
           <div className="relative order-2 md:order-1">
             <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-indigo-50 to-blue-50 opacity-70"></div>
             <Image
@@ -297,10 +295,10 @@ export default function Home() {
                 Feature 06
               </span>
             </div>
-            <h2 className="mb-3 text-3xl font-bold leading-tight">
+            <h2 className="mb-3 text-xl font-bold leading-tight sm:text-2xl md:text-3xl">
               Role-Based Access & Security Management
             </h2>
-            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+            <p className="mb-6 text-lg font-medium leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               Granular Control for Enterprise-Scale Operations
             </p>
             <ul className="space-y-4">
@@ -322,7 +320,7 @@ export default function Home() {
         </section>
 
         {/* Section 7 */}
-        <section className="mb-48 grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <section className="mb-12 grid grid-cols-1 items-center gap-12 md:mb-24 md:grid-cols-2">
           <div className="space-y-6">
             <div className="mb-2 inline-flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100">
@@ -332,10 +330,10 @@ export default function Home() {
                 Feature 07
               </span>
             </div>
-            <h2 className="mb-3 text-3xl font-bold leading-tight">
+            <h2 className="mb-3 text-xl font-bold leading-tight sm:text-2xl md:text-3xl">
               Seamless API-Driven Integrations
             </h2>
-            <p className="mb-6 text-xl font-medium leading-relaxed text-gray-700">
+            <p className="mb-6 text-lg font-medium leading-relaxed text-gray-700 sm:text-xl md:text-2xl">
               Extend & Connect with Enterprise IT Ecosystems
             </p>
             <ul className="space-y-4">

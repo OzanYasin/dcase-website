@@ -3,7 +3,7 @@ import Image from "next/image";
 export function Content() {
   return (
     <main className="mx-auto max-w-5xl flex-1 px-8 py-12">
-      <section id="mission" className="mb-24">
+      <section id="mission" className="sm:mb-12 md:mb-24">
         <h2 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Our Mission
         </h2>
@@ -27,7 +27,7 @@ export function Content() {
         </div>
       </section>
 
-      <section id="vision" className="mb-24">
+      <section id="vision" className="sm:mb-12 md:mb-24">
         <h2 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Our Vision
         </h2>
@@ -51,7 +51,7 @@ export function Content() {
         </div>
       </section>
 
-      <section id="expertise" className="mb-24">
+      <section id="expertise" className="sm:mb-12 md:mb-24">
         <h1 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Over 25 Years of Combined Expertise
         </h1>
@@ -75,7 +75,7 @@ export function Content() {
         </div>
       </section>
 
-      <section id="innovation" className="mb-24">
+      <section id="innovation" className="sm:mb-12 md:mb-24">
         <h2 className="mb-8 bg-gradient-to-r from-dcase to-dcase-secondary bg-clip-text text-4xl font-normal text-transparent">
           Revolutionizing ITSM through Innovation
         </h2>

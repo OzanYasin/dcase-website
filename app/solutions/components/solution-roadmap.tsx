@@ -135,10 +135,10 @@ export default function SolutionRoadmapTimeline() {
     <div className="mx-auto max-w-[90rem] px-4 py-12 sm:px-6 md:py-12 lg:px-8">
       {/* Section Heading */}
       <div className="mb-12 text-center sm:mb-16 md:mb-20">
-        <h2 className="mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:mb-4 sm:text-4xl">
+        <h2 className="mb-3 text-2xl font-bold tracking-tight text-gray-900 sm:mb-4 sm:text-3xl md:text-4xl lg:text-5xl">
           Our Implementation Roadmap
         </h2>
-        <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl">
+        <p className="mx-auto max-w-3xl text-base text-gray-600 md:text-lg lg:text-xl">
           A Seamless Transition to IT Excellence
         </p>
       </div>

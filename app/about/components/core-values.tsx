@@ -12,12 +12,12 @@ interface ValueCardProps {
 
 function ValueCard({ icon, title, description }: ValueCardProps) {
   return (
-    <div className="border-dcase-secondary-light group flex flex-col items-start gap-4 rounded-xl border bg-gradient-to-br from-dcase/10 to-dcase/5 p-6 transition-all duration-300 hover:shadow-lg hover:shadow-dcase/20">
-      <div className="to-dcase-dark rounded-lg bg-gradient-to-br from-dcase p-3 transition-transform duration-300 group-hover:scale-110">
+    <div className="group flex flex-col items-start gap-4 rounded-xl border border-dcase-secondary-light bg-gradient-to-br from-dcase/10 to-dcase/5 p-6 transition-all duration-300 hover:shadow-lg hover:shadow-dcase/20">
+      <div className="rounded-lg bg-gradient-to-br from-dcase to-dcase-dark p-3 transition-transform duration-300 group-hover:scale-110">
         {icon}
       </div>
       <div className="space-y-2">
-        <h3 className="text-dcase-secondary whitespace-nowrap text-xl font-bold transition-colors duration-300">
+        <h3 className="whitespace-nowrap text-xl font-bold text-dcase-secondary transition-colors duration-300">
           {title}
         </h3>
         <p className="text-lg leading-7 text-white [&:not(:first-child)]:mt-6">
@@ -57,7 +57,7 @@ export default function CoreValues() {
   ];
 
   return (
-    <Card className="from-dcase-darkest to-dcase-darker border-dcase-secondary overflow-hidden rounded-2xl bg-gradient-to-br">
+    <Card className="overflow-hidden rounded-2xl border-dcase-secondary bg-gradient-to-br from-dcase-darkest to-dcase-darker">
       <div className="px-8 py-16 md:px-16 lg:px-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
@@ -81,8 +81,8 @@ export default function CoreValues() {
               />
             ))}
           </div>
-          <div className="mt-16 text-center">
-            <button className="to-dcase-secondary-light text-dcase-darkest from-dcase-secondary hover:shadow-dcase-secondary/30 group inline-flex items-center gap-3 rounded-lg bg-gradient-to-r px-8 py-4 text-lg font-bold transition-all duration-300 hover:shadow-lg">
+          <div className="mt-8 text-center md:mt-16">
+            <button className="group inline-flex items-center gap-3 rounded-lg bg-gradient-to-r from-dcase-secondary to-dcase-secondary-light px-8 py-4 text-lg font-bold text-dcase-darkest transition-all duration-300 hover:shadow-lg hover:shadow-dcase-secondary/30">
               <span className="flex items-center gap-3">
                 <span className="translate-x-0 transition-transform duration-300 group-hover:translate-x-2">
                   Learn More About Our Approach

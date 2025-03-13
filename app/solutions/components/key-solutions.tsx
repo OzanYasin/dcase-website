@@ -41,7 +41,7 @@ export default function KeySolutions() {
                 </Badge>
                 <span className="h-px w-10 bg-teal-200"></span>
               </div>
-              <h2 className="text-4xl font-bold leading-tight tracking-tight text-gray-900">
+              <h2 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl md:text-4xl md:lg:text-5xl lg:text-5xl">
                 <span className="bg-gradient-to-r from-teal-600 to-teal-500 bg-clip-text text-transparent">
                   End-to-End
                 </span>{" "}
@@ -65,7 +65,7 @@ export default function KeySolutions() {
                     <Settings className="h-6 w-6 text-teal-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Integrated ITIL processes
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -80,7 +80,7 @@ export default function KeySolutions() {
                     <Workflow className="h-6 w-6 text-teal-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Consistent workflows
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -95,7 +95,7 @@ export default function KeySolutions() {
                     <Shield className="h-6 w-6 text-teal-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Enhanced governance
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -159,7 +159,7 @@ export default function KeySolutions() {
                 <span className="h-px w-10 bg-blue-200"></span>
               </div>
 
-              <h2 className="text-4xl font-bold leading-tight tracking-tight text-gray-900">
+              <h2 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                   Streamlined
                 </span>{" "}
@@ -186,7 +186,7 @@ export default function KeySolutions() {
                     <Zap className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Accelerated service delivery
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -200,7 +200,7 @@ export default function KeySolutions() {
                     <Activity className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Intelligent ticket routing
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -214,7 +214,7 @@ export default function KeySolutions() {
                     <Clock className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Faster resolution times
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -246,7 +246,7 @@ export default function KeySolutions() {
                 <span className="h-px w-10 bg-amber-200"></span>
               </div>
 
-              <h2 className="text-4xl font-bold leading-tight tracking-tight text-gray-900">
+              <h2 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">
                   Proactive
                 </span>{" "}
@@ -272,7 +272,7 @@ export default function KeySolutions() {
                     <BarChart3 className="h-6 w-6 text-amber-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Advanced monitoring
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -286,7 +286,7 @@ export default function KeySolutions() {
                     <Target className="h-6 w-6 text-amber-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Root-cause analysis
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -300,7 +300,7 @@ export default function KeySolutions() {
                     <Server className="h-6 w-6 text-amber-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Minimized downtime
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -364,7 +364,7 @@ export default function KeySolutions() {
                 <span className="h-px w-10 bg-indigo-200"></span>
               </div>
 
-              <h2 className="text-4xl font-bold leading-tight tracking-tight text-gray-900">
+              <h2 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">
                   Service Level
                 </span>{" "}
@@ -391,7 +391,7 @@ export default function KeySolutions() {
                     <TrendingUp className="h-6 w-6 text-indigo-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Continuous performance monitoring
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -405,7 +405,7 @@ export default function KeySolutions() {
                     <BarChart3 className="h-6 w-6 text-indigo-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Robust analytics
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -419,7 +419,7 @@ export default function KeySolutions() {
                     <CheckCircle2 className="h-6 w-6 text-indigo-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       SLA and OLA tracking
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -451,7 +451,7 @@ export default function KeySolutions() {
                 <span className="h-px w-10 bg-emerald-200"></span>
               </div>
 
-              <h2 className="text-4xl font-bold leading-tight tracking-tight text-gray-900">
+              <h2 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">
                   Business-Aligned
                 </span>{" "}
@@ -478,7 +478,7 @@ export default function KeySolutions() {
                     <LayoutGrid className="h-6 w-6 text-emerald-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Strategic IT alignment
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -492,7 +492,7 @@ export default function KeySolutions() {
                     <TrendingUp className="h-6 w-6 text-emerald-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Enhanced collaboration
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -506,7 +506,7 @@ export default function KeySolutions() {
                     <Target className="h-6 w-6 text-emerald-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Sustainable growth
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -570,7 +570,7 @@ export default function KeySolutions() {
                 <span className="h-px w-10 bg-purple-200"></span>
               </div>
 
-              <h2 className="text-4xl font-bold leading-tight tracking-tight text-gray-900">
+              <h2 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">
                   Scalable
                 </span>{" "}
@@ -596,7 +596,7 @@ export default function KeySolutions() {
                     <Scale className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Flexible architecture
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -610,7 +610,7 @@ export default function KeySolutions() {
                     <Code className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Seamless integrations
                     </p>
                     <p className="mt-1.5 text-gray-500">
@@ -624,7 +624,7 @@ export default function KeySolutions() {
                     <Database className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-base font-semibold text-gray-900 md:text-lg">
                       Future-ready infrastructure
                     </p>
                     <p className="mt-1.5 text-gray-500">

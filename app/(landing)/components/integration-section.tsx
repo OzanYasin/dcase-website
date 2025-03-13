@@ -23,14 +23,14 @@ export default function IntegrationSection() {
 
         {/* Right side - Text content */}
         <div className="w-full md:w-1/2">
-          <h2 className="text-4xl font-bold leading-tight text-gray-900 md:text-5xl">
+          <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl">
             Transform Your
             <span className="block text-dcase-secondary">
               IT Service Operations
             </span>
           </h2>
 
-          <p className="mt-6 text-lg text-gray-700">
+          <p className="mt-6 text-base text-gray-700 md:text-lg lg:text-xl">
             Our comprehensive suite of integrated ITSM solutions streamlines
             every aspect of your service lifecycle from real-time SLA monitoring
             and process automation to proactive alerts, task tracking, asset
@@ -49,7 +49,9 @@ export default function IntegrationSection() {
                 />
               </div> */}
               <div>
-                <span className="text-lg font-medium">SLA Manager:</span>
+                <span className="text-base font-bold text-gray-700">
+                  SLA Manager:
+                </span>
                 <span className="text-gray-700">
                   {" "}
                   Monitor SLAs in real time with actionable insights and
@@ -68,7 +70,9 @@ export default function IntegrationSection() {
                 />
               </div> */}
               <div>
-                <span className="text-lg font-medium">Workflow Engine:</span>
+                <span className="text-base font-bold text-gray-700">
+                  Workflow Engine:
+                </span>
                 <span className="text-gray-700">
                   {" "}
                   Automate critical processes to accelerate service delivery.
@@ -86,7 +90,7 @@ export default function IntegrationSection() {
                 />
               </div> */}
               <div>
-                <span className="text-lg font-medium">
+                <span className="text-base font-bold text-gray-700">
                   Notification Manager:
                 </span>
                 <span className="text-gray-700">
@@ -106,7 +110,9 @@ export default function IntegrationSection() {
                 />
               </div> */}
               <div>
-                <span className="text-lg font-medium">Activity Manager:</span>
+                <span className="text-base font-bold text-gray-700">
+                  Activity Manager:
+                </span>
                 <span className="text-gray-700">
                   {" "}
                   Manage tasks efficiently to achieve optimal performance.
@@ -127,7 +133,9 @@ export default function IntegrationSection() {
               </div>
               */}
               <div>
-                <span className="text-lg font-medium">Asset Manager:</span>
+                <span className="text-base font-bold text-gray-700">
+                  Asset Manager:
+                </span>
                 <span className="text-gray-700">
                   {" "}
                   Oversee the entire lifecycle of IT assets seamlessly and
@@ -149,7 +157,9 @@ export default function IntegrationSection() {
               </div>
               */}
               <div>
-                <span className="text-lg font-medium">Template Manager:</span>
+                <span className="text-base font-bold text-gray-700">
+                  Template Manager:
+                </span>
                 <span className="text-gray-700">
                   {" "}
                   Quickly utilize templates for consistent service delivery.
@@ -170,7 +180,9 @@ export default function IntegrationSection() {
               </div>
               */}
               <div>
-                <span className="text-lg font-medium">And More:</span>
+                <span className="text-base font-bold text-gray-700">
+                  And More:
+                </span>
                 <span className="text-gray-700">
                   {" "}
                   Access additional tools designed to enhance every aspect of

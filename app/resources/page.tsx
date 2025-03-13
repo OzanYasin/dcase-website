@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import IndustryCard from "./components/industry-card";
 import ResourcesWorldMapDemo from "./components/resources-world-demo";
+import ResourcesGetInTouchSection from "./components/resources-get-in-touch";
 
 const industries = [
   {
@@ -175,17 +176,17 @@ const industries = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 px-4 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="mx-auto max-w-6xl"
       >
-        <h1 className="mb-8 text-center text-5xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+        <h1 className="mb-8 text-center text-3xl font-bold leading-tight tracking-wide text-black subpixel-antialiased sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-[1.2]">
           Transforming Industries with Tailored ITSM Innovations
         </h1>
-        <p className="mx-auto mb-10 max-w-4xl text-center text-xl leading-relaxed text-gray-600 sm:text-2xl lg:text-3xl">
+        <p className="mb-4 text-center text-lg font-extralight leading-relaxed text-muted-foreground sm:text-xl md:mt-6 md:text-2xl lg:mt-8 lg:text-[1.6rem] lg:leading-normal">
           Discover how DCase ITSM solutions empower organizations across
           multiple industries to achieve digital excellence and operational
           efficiency.
@@ -204,6 +205,7 @@ export default function Home() {
           ))}
         </div>
       </motion.div>
+      <ResourcesGetInTouchSection />
     </div>
   );
 }

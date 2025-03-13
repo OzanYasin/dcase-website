@@ -5,14 +5,14 @@ export default function TestimonialSection() {
   return (
     <section className="container mx-auto px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-20">
       <div className="space-y-6 sm:space-y-8 lg:space-y-12">
-        <h2 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-[#10b981] sm:text-4xl md:text-5xl">
+        <h2 className="max-w-3xl text-2xl font-bold leading-tight tracking-tight text-[#10b981] sm:text-3xl md:text-4xl lg:text-5xl">
           Trusted by Innovators
         </h2>
 
         <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:gap-12">
           <Card className="flex-1 border-0 shadow-none">
             <CardContent className="space-y-4 p-0 sm:space-y-6">
-              <blockquote className="text-lg leading-relaxed sm:text-xl md:text-2xl">
+              <blockquote className="text-base leading-relaxed md:text-lg lg:text-xl">
                 &ldquo;Partnering with DCase has profoundly enhanced our IT
                 operations. The remarkable efficiency improvements and
                 transparency in service management have exceeded our
@@ -44,7 +44,7 @@ export default function TestimonialSection() {
 
           <Card className="flex-1 border-0 shadow-none">
             <CardContent className="space-y-4 p-0 sm:space-y-6">
-              <blockquote className="text-lg leading-relaxed sm:text-xl md:text-2xl">
+              <blockquote className="text-base leading-relaxed md:text-lg lg:text-xl">
                 &ldquo;Implementing DCase&apos;s solutions has completely
                 redefined our operations. Our team now functions with heightened
                 precision and agility, consistently delivering exceptional

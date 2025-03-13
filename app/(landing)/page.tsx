@@ -12,7 +12,6 @@ export default function Home() {
       <HeroSection />
       <Benefits />
       <EcosystemSection />
-      {/* <WhySection /> */}
       <IntegrationSection />
       <TestimonialSection />
       <CTASection />

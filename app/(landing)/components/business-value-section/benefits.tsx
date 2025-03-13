@@ -109,7 +109,7 @@ export default function Benefits() {
     <div className="relative overflow-hidden bg-neutral-100 px-4 sm:px-6 lg:px-8">
       <div className="relative mx-auto max-w-7xl space-y-8 py-10">
         <div className="text-center">
-          <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 subpixel-antialiased sm:text-3xl md:text-5xl lg:text-4xl xl:text-5xl">
+          <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 subpixel-antialiased sm:text-3xl md:text-4xl lg:text-5xl">
             Drive{" "}
             <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">
               Tangible

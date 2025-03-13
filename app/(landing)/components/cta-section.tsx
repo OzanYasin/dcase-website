@@ -12,7 +12,7 @@ export default function HeroSection() {
         <div className="bg-grid-white/[0.05] absolute inset-0 -z-10" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 to-transparent" />
         <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-          <h1 className="mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl md:text-5xl">
+          <h1 className="mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-2xl font-bold tracking-tight text-transparent sm:text-3xl md:text-4xl">
             <span className="text-dcase">Let&apos;s Build</span> Your Ideal ITSM
             Solution Together
           </h1>
@@ -50,7 +50,7 @@ export default function HeroSection() {
               >
                 <Button
                   size="lg"
-                  className="group relative w-full overflow-hidden bg-dcase text-white transition-all duration-200 hover:bg-dcase/90 sm:w-auto"
+                  className="overflow-hidden bg-dcase px-4 text-white transition-all duration-200 hover:bg-dcase/90 sm:w-auto"
                   asChild
                 >
                   <Link href="/contact-us">
@@ -73,7 +73,7 @@ export default function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="w-full border-white bg-transparent text-white transition-all duration-200 hover:bg-white hover:text-gray-900 sm:w-auto"
+              className="border-white bg-transparent px-4 text-white transition-all duration-200 hover:bg-white hover:text-gray-900 sm:w-auto"
             >
               <Link href="/request-demo">Schedule a Personalized Demo</Link>
             </Button>
